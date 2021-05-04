@@ -1,6 +1,7 @@
 import { keepService } from '../services/keep-service.js'
 
 import { NotesAdd } from '../cmps/NotesAdd.jsx'
+import { NotesList } from '../cmps/NotesList.jsx'
 
 export class KeepApp extends React.Component {
     state = {
@@ -23,6 +24,7 @@ export class KeepApp extends React.Component {
         return (
             <section className="notes-app">
                 <NotesAdd />
+                <NotesList notes={this.state.notes}/>
             </section>
         )
     }

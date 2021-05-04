@@ -18,26 +18,40 @@ function _createNotes() {
     notes = [
       {
         id: utilService.makeId(),
-        type: "NoteText",
+        type: "NoteText", // for TEXT
         isPinned: true,
         info: {
           txt: "Fullstack Me Baby!",
         },
       },
+
       {
         id: utilService.makeId(),
-        type: "NoteImg",
+        type: "NoteText", // for TEXT
+        isPinned: true,
         info: {
-          url: "http://some-img/me",
+          txt: "Another note",
+        },
+      },
+
+
+      {
+        id: utilService.makeId(),
+        type: "NoteImg", // for IMG
+        info: {
+          url:
+            "http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/banana.png",
           title: "Me playing Mi",
         },
         style: {
           backgroundColor: "#00d",
         },
       },
+
+
       {
         id: utilService.makeId(),
-        type: "NoteTodos",
+        type: "NoteTodos", // for TODO
         info: {
           label: "How was it:",
           todos: [
@@ -46,6 +60,17 @@ function _createNotes() {
           ],
         },
       },
+
+
+      {
+        id: utilService.makeId(),
+        type: "NoteVid", // for VID
+        info: {
+          url: "https://www.youtube.com/watch?v=V08j6xzaDrI",
+        },
+      },
+
+      
     ];
   }
   gNotes = notes;

@@ -1,0 +1,5 @@
+@import './pages/KeepApp.css';
+
+@import './cmps/NotesAdd.css';
+@import './cmps/NotesList.css';
+@import './cmps/NotesPreviews.css'

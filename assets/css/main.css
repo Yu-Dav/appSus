@@ -9,3 +9,12 @@
 
 /* EmailApp */
 @import '../../apps/Email/assets/css/email-main.css';
+
+/* KeepApp */
+
+@import '../../apps/Keep/assets/css/keep-main.css';
+
+@font-face {
+    font-family: icons;
+    src: url(../fonts/fa-regular-400.ttf);
+}

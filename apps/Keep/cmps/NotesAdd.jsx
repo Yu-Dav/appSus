@@ -2,14 +2,11 @@
 export class NotesAdd extends React.Component {
     render() {
         return (
-            <section className="notes-add flex space-btw">
+            <section className="notes-add container flex space-btw">
                 <input type="text" placeholder="What's on your mind?"/>
                 <div>
-                    <i>img</i>
-                    <i>img</i>
-                    <i>img</i>
-                    <i>img</i>
-                    <i>img</i>
+                    <i className="fa-icn"></i>
+                
                 </div>
             </section>
         )
