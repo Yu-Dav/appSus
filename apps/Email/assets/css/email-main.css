@@ -3,3 +3,5 @@
 @import './pages/EmailApp.css';
 
 /* cmps */
+
+@import './cmps/EmailPreview.css'

@@ -1,3 +1,4 @@
+import { utilService } from '../../../services/util-service.js'
 import { storageService } from '../../../services/storage-service.js';
 
 export const emailService = {
@@ -16,8 +17,8 @@ function _createEmails() {
     var emails = storageService.loadFromStorage(KEY);
     if (!emails || !emails.length) {
         emails = [
-            { subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 }
-        ] 
+            { from: 'Paco El', id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: new Date() }
+        ]
     }
     gEmails = emails;
     _saveEmailsToStorage();

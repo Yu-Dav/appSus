@@ -1,3 +1,4 @@
+import { EmailList } from '../cmps/EmailList.jsx'
 import { emailService } from '../services/email-service.js'
 
 export class EmailApp extends React.Component {
@@ -21,13 +22,7 @@ export class EmailApp extends React.Component {
         if (!emails) return <div>Loading...</div> //TODO- use cmp loading
         return (
             <section className="email-app">
-                <p>{emails[0].subject}</p>
-                This is the mail app
-
-                compose
-                sort buttons
-
-                list
+                <EmailList emails={emails}/>
 
             </section>
         )

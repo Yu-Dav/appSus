@@ -1,0 +1,7 @@
+.email-preview span{
+    margin-inline-end: 10px;
+}
+
+a:hover{
+    font-weight: normal;
+}
