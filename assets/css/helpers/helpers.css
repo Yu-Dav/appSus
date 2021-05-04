@@ -10,11 +10,22 @@
     display: flex;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
 .space-btw {
     justify-content: space-between;
 }
 
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
 .container {
-    /* width: 80%; */
     margin: 0 2em;
 }

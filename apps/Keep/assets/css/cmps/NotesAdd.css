@@ -1,12 +1,54 @@
+.notes-add>*:not(:last-child) {
+    margin-inline-end: 20px;
+}
+
+.notes-add {
+    padding: 1em 0;
+    background-color: #fff;
+}
+
+.notes-add input {
+    padding: 0.5em 1em;
+    line-height: 1.5em;
+    /* border-color: transparent; */
+    outline: none;
+    height: fit-content;
+    width: 100%;
+
+}
+
+.notes-add-btns>*:not(:last-child) {
+    margin-inline-end: 10px;
+}
+
 .fa {
     font-family: icons;
+    font-size: 1.25em;
 }
 
 .fas {
     font-family: icons-solid;
+    font-size: 1.5em;
 }
 
 .fa-txt::after {
     content: "\f031";
-    font-size: 1.25em;
+}
+
+.fa-image::after {
+    content: "\f03e";
+}
+
+.fa-video::after {
+    content: "\f03d";
+
+}
+
+.fa-volume-up::after {
+    content: "\f028";
+}
+
+.fa-tasks::after {
+    content: "\f0ae";
+
 }

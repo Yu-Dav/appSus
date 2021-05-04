@@ -4,7 +4,9 @@ export function NoteTxt({ note }) {
     // console.log ('var =',note)
     return (
         <div className="note-preview">
-            {note.info.txt}
+            <p contentEditable="true">
+                {note.info.txt}
+            </p>
             <NoteActions />
             {/* hardcoded  */}
         </div>

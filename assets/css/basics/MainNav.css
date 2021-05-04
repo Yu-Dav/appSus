@@ -1,4 +1,14 @@
 header {
-    background-color: rgb(191, 192, 190);
     padding: 2.25em 0;
+}
+
+h2 img {
+    height: 80px;
+}
+
+h2 {
+    font-family: alfa, sans-serif;
+    color: #464c55;
+    letter-spacing: 1px;
+    font-size: 1.3em;
 }
