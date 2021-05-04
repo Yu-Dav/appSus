@@ -1,0 +1,22 @@
+@import url("basics/reset.css");
+@import url("basics/HomaPage.css");
+@import url("basics/MainNav.css");
+@import url("basics/UserMsg.css");
+@import url("basics/fonts.css");
+@import url("basics/base.css");
+
+body {
+    background-color: lightblue;
+}
+
+.user-preview {
+    background-color: darkcyan;
+    padding: 5px;
+    width: 200px;
+    text-align: center;    
+}
+.user-preview button {
+    margin: 5px;
+}
+
+

@@ -1,0 +1,16 @@
+
+.clean-list {
+	list-style: none;
+	padding: 0;
+	list-style-type: none;
+	margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    font-weight: bold;
+}
