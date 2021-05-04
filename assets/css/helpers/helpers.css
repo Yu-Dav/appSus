@@ -1,0 +1,23 @@
+
+.clean-list {
+	list-style: none;
+	padding: 0;
+	list-style-type: none;
+	margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.space-btw {
+    justify-content: space-between;
+}
+
+.container {
+    /* width: 80%; */
+    /* margin-inline-end: 2em; */
+    /* margin-inline-start: 2em; */
+    margin: 0 2em;
+    padding: 2.25em 1em;
+}

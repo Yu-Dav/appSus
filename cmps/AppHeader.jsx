@@ -13,17 +13,19 @@ export class AppHeader extends React.Component {
 
     render() {
         return (
-            <nav className="app-header flex">
-                <h2 className="title">appSus</h2>
-                {this.state.isFilterShowing && <AppFilter />}
-                <ul className="clean-list">
-                    {/* <li><NavLink exact to="/" activeClassName="active-nav">Home</NavLink></li> */}
-                    <li><NavLink exact to="/" >Home</NavLink></li>
-                    <li><NavLink to="/about">About</NavLink> </li>
-                    <li><NavLink to="/mail">Mail</NavLink> </li>
-                    <li><NavLink to="/keep">Keep</NavLink> </li>
-                </ul>
-            </nav>
+            <header>
+                <nav className="app-header container flex space-btw">
+                    <h2 className="title">appSus</h2>
+                    {this.state.isFilterShowing && <AppFilter />}
+                    <ul className="clean-list flex">
+                        {/* <li><NavLink exact to="/" activeClassName="active-nav">Home</NavLink></li> */}
+                        <li><NavLink exact to="/" >Home</NavLink></li>
+                        <li><NavLink to="/about">About</NavLink> </li>
+                        <li><NavLink to="/mail">Mail</NavLink> </li>
+                        <li><NavLink to="/keep">Keep</NavLink> </li>
+                    </ul>
+                </nav>
+            </header>
         )
     }
 }
