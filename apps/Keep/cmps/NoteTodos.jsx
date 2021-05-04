@@ -6,8 +6,8 @@ export function NoteTodos({ note }) {
         <div className="note-preview">
             {note.info.label}
             <ul>
-                {todos.map(todo=>{
-                    return <li>{todo.txt}</li>
+                {todos.map((todo,idx)=>{
+                    return <li key={idx}>{todo.txt}</li>
                 })}
             </ul>
             <NoteActions/>

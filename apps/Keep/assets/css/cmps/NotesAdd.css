@@ -1,7 +1,12 @@
-.fa-icn {
+.fa {
     font-family: icons;
 }
 
-.fa-icn::after {
-    content: "\f2b9";
+.fas {
+    font-family: icons-solid;
+}
+
+.fa-txt::after {
+    content: "\f031";
+    font-size: 1.25em;
 }

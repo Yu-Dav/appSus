@@ -18,3 +18,8 @@
     font-family: icons;
     src: url(../fonts/fa-regular-400.ttf);
 }
+
+@font-face {
+    font-family: icons-solid;
+    src: url(../fonts/fa-solid-900.ttf);
+}
