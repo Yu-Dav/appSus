@@ -1,14 +1,12 @@
 // import React from 'react'
 const { NavLink, withRouter } = ReactRouterDOM
 
-import { AppFilter } from './AppFilter.jsx'
 
 
 
 export class AppHeader extends React.Component {
     state = {
-        isFilterShowing: true
-        // Change to false when we're ready
+       
     }
 
     render() {
@@ -16,7 +14,6 @@ export class AppHeader extends React.Component {
             <header>
                 <nav className="app-header container flex space-btw">
                     <h2 className="title">appSus</h2>
-                    {this.state.isFilterShowing && <AppFilter />}
                     <ul className="clean-list flex">
                         {/* <li><NavLink exact to="/" activeClassName="active-nav">Home</NavLink></li> */}
                         <li><NavLink exact to="/" >Home</NavLink></li>

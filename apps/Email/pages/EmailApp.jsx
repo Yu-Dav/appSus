@@ -3,7 +3,7 @@
 export class EmailApp extends React.Component {
     render() {
         return (
-            <section class="mail-app">
+            <section >
                 This is the mail app
 
                 compose 
