@@ -22,7 +22,7 @@ export class EmailApp extends React.Component {
         if (!emails) return <div>Loading...</div> //TODO- use cmp loading
         return (
             <section className="email-app">
-                <EmailList emails={emails}/>
+                <EmailList emails={emails} />
 
             </section>
         )

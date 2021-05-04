@@ -4,8 +4,8 @@ const { Route, Switch } = ReactRouterDOM
 import { Home } from './pages/Home.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { AboutUs } from './pages/About.jsx'
-import {KeepApp} from './apps/Keep/pages/KeepApp.jsx'
-import {EmailApp} from './apps/Email/pages/EmailApp.jsx'
+import { KeepApp } from './apps/Keep/pages/KeepApp.jsx'
+import { EmailApp } from './apps/Email/pages/EmailApp.jsx'
 
 
 export function App() {
@@ -14,8 +14,10 @@ export function App() {
             <AppHeader />
             <main>
                 <Switch>
+                    <Route component={EmailDetails} path="/Email/:Email.id"/>
+
                     <Route component={KeepApp} path="/keep" />
-                    <Route component={EmailApp} path="/mail" />
+                    <Route component={EmailApp} path="/Email" />
                     <Route component={AboutUs} path="/about" />
                     <Route component={Home} path="/" />
                     {/* If we want to send props to a route: */}
