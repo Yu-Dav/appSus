@@ -14,3 +14,19 @@ a {
 a:hover {
     font-weight: bold;
 }
+
+body {
+    background-color: rgb(227, 230, 231);
+}
+
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+footer {
+	text-align: center;
+	margin-top: auto;
+	padding: 2em 0em;
+}
