@@ -1,0 +1,7 @@
+.fa-icn {
+    font-family: icons;
+}
+
+.fa-icn::after {
+    content: "\f2b9";
+}

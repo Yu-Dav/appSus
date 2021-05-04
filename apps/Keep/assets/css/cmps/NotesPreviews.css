@@ -1,0 +1,11 @@
+.note-preview {
+    background-color: rgb(184, 196, 173);
+    max-width: 250px;
+    margin-bottom: 20px;
+    padding: 1em;
+    break-inside: avoid;
+}
+
+.note-preview img {
+    width: 100%;
+}
