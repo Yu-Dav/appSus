@@ -1,11 +1,29 @@
-// import React, { Component } from 'react'
+import { keepService } from '../services/keep-service.js'
 
-export  class KeepApp extends React.Component {
+import { NotesAdd } from '../cmps/NotesAdd.jsx'
+
+export class KeepApp extends React.Component {
+    state = {
+        notes: null
+    }
+
+    componentDidMount() {
+        this.loadNotes()
+    }
+
+
+    loadNotes() {
+        keepService.query().then(notes => {
+            setTimeout(() => this.setState({ notes }), 1000)
+        })
+    }
+
     render() {
+        if (!this.state.notes) return <div>Loading....</div>;
         return (
-            <div>
-               This is the keep app 
-            </div>
+            <section className="notes-app">
+                <NotesAdd />
+            </section>
         )
     }
 }
