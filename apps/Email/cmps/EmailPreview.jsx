@@ -11,7 +11,6 @@ export function EmailPreview({ email }) {
             <section className="email-preview" >
                 <span>{email.from}</span>
                 <span>{email.subject}</span>
-                {/* <span>{email.body}</span> */}
                 <span><LongTxt txt={email.body}/></span>
                <span><ShowTime timeStamp={email.sentAt}/></span>
             </section>
@@ -25,4 +24,3 @@ export function EmailPreview({ email }) {
     )
 }
 
-//todo- add component for time?
