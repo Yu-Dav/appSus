@@ -1,8 +1,8 @@
 import { EmailList } from '../cmps/EmailList.jsx'
 import { EmailCompose } from '../cmps/EmailCompose.jsx'
+import { EmailSideBar } from '../cmps/EmailSideBar.jsx'
 import { emailService } from '../services/email-service.js'
-import { eventBusService } from '../services/event-bus-service.js'
-import { EmailDetails } from '../cmps/EmailDetails.jsx'
+
 const { Route, Switch } = ReactRouterDOM
 
 export class EmailApp extends React.Component {
@@ -33,7 +33,7 @@ export class EmailApp extends React.Component {
 
 
 
-    onReadEmail = (emailId) => {
+    onSetReadEmail = (emailId) => {
         emailService.setIsRead(emailId).then(this.loadEmails)
     }
 
@@ -48,6 +48,11 @@ export class EmailApp extends React.Component {
         if (view === 'trash') return emails.filter(email => email.isTrash)
     }
 
+    onDeleteEmail = (emailId) => {
+        emailService.deleteEmail(emailId)
+            .then((res) => this.loadEmails())
+    }
+
 
     render() {
         const { emails } = this.state
@@ -55,14 +60,12 @@ export class EmailApp extends React.Component {
         if (!emails) return <div>Loading...</div> //TODO- use cmp loading
         return (
             <section className="email-app flex">
-                <div className="email-controls"></div>
-                <button onClick={() => this.onOpenModal()}>compose</button>
+                {/* moved to emailsidebar */}
                 {isComposed && <EmailCompose onSendingEmail={this.onSendingEmail} />}
-                {/* <EmailSideBar onSetView={this.onSetView}/> */}
+                <EmailSideBar onSetView={this.onSetView} onOpenModal={this.onOpenModal} />
                 <Switch>
-                    <Route component={EmailDetails} path="/email/:emailId" />
                     <Route path="/email" render={(props) => (
-                        <EmailList {...props} emails={this.setEmailsForDisplay()} onReadEmail={this.onReadEmail} />
+                        <EmailList {...props} emails={this.setEmailsForDisplay()} onSetReadEmail={this.onSetReadEmail} onDeleteEmail={this.onDeleteEmail} />
                     )} />
                 </Switch>
             </section>

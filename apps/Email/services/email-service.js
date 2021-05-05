@@ -4,7 +4,8 @@ import { storageService } from '../../../services/storage-service.js';
 export const emailService = {
     query,  //TODO- use also filtering
     addEmail,
-    setIsRead
+    setIsRead,
+    deleteEmail
 }
 
 const KEY = 'emails';
@@ -20,12 +21,12 @@ function _createEmails() {
     var emails = storageService.loadFromStorage(KEY);
     if (!emails || !emails.length) {
         emails = [
-            { from: 'Paco El', id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1620201753247 },
-            { from: 'Yuval Da', id: utilService.makeId(), subject: 'Sprint 3', body: 'Lets zoom', isRead: false, sentAt: 1620200994854 },
-            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place', isRead: false, sentAt: Date.now() },
-            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place', isRead: false, sentAt: Date.now() },
-            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place', isRead: false, sentAt: Date.now() },
-            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place', isRead: false, sentAt: 1551133930594 },
+            { from: 'Paco El', id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!',isTrash: false, isRead: false, sentAt: 1620201753247 },
+            { from: 'Yuval Da', id: utilService.makeId(), subject: 'Sprint 3', body: 'Lets zoom',isTrash: false, isRead: false, sentAt: 1620200994854 },
+            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place',isTrash: false, isRead: false, sentAt: Date.now() },
+            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place',isTrash: false, isRead: false, sentAt: Date.now() },
+            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place',isTrash: false, isRead: false, sentAt: Date.now() },
+            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place',isTrash: false, isRead: false, sentAt: 1551133930594 },
         ]
     }
     gEmails = emails;
@@ -33,10 +34,11 @@ function _createEmails() {
 }
 
 function _getIdxById(id) {
-    return gEmails.findIndex(email => id === emailId)
+    return gEmails.findIndex(email => id === email.id)
 }
 
 function setIsRead(emailId) {
+    console.log('sevice-id', emailId);
     const idx = _getIdxById(emailId)
     gEmails[idx].isRead = !gEmails[idx].isRead
     _saveEmailsToStorage();
@@ -58,6 +60,7 @@ function addEmail(email) {
         id: utilService.makeId(),
         subject: email.subject,
         body: email.body,
+        isTrash: false,
         isRead: false,
         sentAt: Date.now()
     }

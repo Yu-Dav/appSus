@@ -1,3 +1,8 @@
 .mail-app {
     color: black;
 }
+
+/* only for debugging - delete! */
+.detailed-body{
+    color:rgb(35, 33, 36);
+}
