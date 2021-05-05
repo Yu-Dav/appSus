@@ -2,4 +2,6 @@
 
 @import './cmps/NotesAdd.css';
 @import './cmps/NotesList.css';
-@import './cmps/NotesPreviews.css'
+@import './cmps/NotesPreviews.css';
+@import './cmps/NoteActions.css';
+@import './cmps/NotesAddSelect.css'

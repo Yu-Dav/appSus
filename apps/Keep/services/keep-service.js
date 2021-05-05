@@ -8,6 +8,7 @@ const KEY = "notesDB";
 var gNotes;
 
 _createNotes();
+
 function query() {
   return Promise.resolve(gNotes);
 }
@@ -18,7 +19,7 @@ function _createNotes() {
     notes = [
       {
         id: utilService.makeId(),
-        type: "NoteText", // for TEXT
+        type: "noteText", // for TEXT
         isPinned: true,
         info: {
           txt: "Fullstack Me Baby!",
@@ -27,7 +28,7 @@ function _createNotes() {
 
       {
         id: utilService.makeId(),
-        type: "NoteText", // for TEXT
+        type: "noteText", // for TEXT
         isPinned: true,
         info: {
           txt: "Another note",
@@ -37,7 +38,7 @@ function _createNotes() {
 
       {
         id: utilService.makeId(),
-        type: "NoteImg", // for IMG
+        type: "noteImg", // for IMG
         info: {
           url:
             "http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/banana.png",
@@ -48,10 +49,9 @@ function _createNotes() {
         },
       },
 
-
-      {
+            {
         id: utilService.makeId(),
-        type: "NoteTodos", // for TODO
+        type: "noteTodos", // for TODO
         info: {
           label: "How was it:",
           todos: [
@@ -64,13 +64,12 @@ function _createNotes() {
 
       {
         id: utilService.makeId(),
-        type: "NoteVid", // for VID
+        type: "noteVid", // for VID
         info: {
           url: "https://www.youtube.com/watch?v=V08j6xzaDrI",
         },
       },
-
-      
+     
     ];
   }
   gNotes = notes;
