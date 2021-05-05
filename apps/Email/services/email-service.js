@@ -3,6 +3,7 @@ import { storageService } from '../../../services/storage-service.js';
 
 export const emailService = {
     query,  //TODO- use also filtering
+    addEmail,
 }
 
 const KEY = 'emails';
@@ -28,6 +29,19 @@ function _createEmails() {
     }
     gEmails = emails;
     _saveEmailsToStorage();
+}
+
+function addEmail(email) {
+    const newEmail = {
+        from: 'Paco El',
+        id: utilService.makeId(),
+        subject: email.subject,
+        body: email.body,
+        isRead: false,
+        sentAt: Date.now()
+    }
+    gEmails.unshift(newEmail)
+    _saveEmailsToStorage()
 }
 
 function _saveEmailsToStorage() {
