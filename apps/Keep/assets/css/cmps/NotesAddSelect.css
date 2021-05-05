@@ -1,0 +1,49 @@
+
+
+.notes-add input[type=radio] {
+   /* display: none; */
+}
+
+.notes-add-btns>*:not(:last-child) {
+    margin-inline-end: 10px;
+}
+
+i:hover {
+    color: #1ab792;
+}
+
+.notes-add input[type=radio]:checked i {
+    color: lightcoral;
+}
+
+.fa {
+    font-family: icons;
+    font-size: 1.25em;
+}
+
+.fas {
+    font-family: icons-solid;
+    font-size: 1.5em;
+}
+
+.fa-txt::after {
+    content: "\f031";
+}
+
+.fa-image::after {
+    content: "\f03e";
+}
+
+.fa-video::after {
+    content: "\f03d";
+
+}
+
+.fa-volume-up::after {
+    content: "\f028";
+}
+
+.fa-tasks::after {
+    content: "\f0ae";
+
+}

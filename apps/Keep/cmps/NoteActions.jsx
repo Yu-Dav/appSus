@@ -2,8 +2,9 @@
 export function NoteActions() {
     return (
         <div>
-            Notes actions:
-            pin / cng bcg clr / 
+            <i className="fa fa-bookmark"></i>
+            <i className="fas fa-palette"></i>
+            <i className="fa fa-trash-alt"></i>
         </div>
     )
 }

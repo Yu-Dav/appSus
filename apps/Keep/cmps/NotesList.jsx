@@ -8,13 +8,13 @@ export function NotesList({ notes }) {
     const DynamicCmp = (note) => {
         // console.log('note =', note)
         switch (note.type) {
-            case 'NoteText':
+            case 'noteText':
                 return <NoteTxt key={note.id} note={note} />
-            case 'NoteImg':
+            case 'noteImg':
                 return <NoteImg key={note.id} note={note} />
-            case 'NoteTodos':
+            case 'noteTodos':
                 return <NoteTodos key={note.id} note={note} />
-            case 'NoteVid':
+            case 'noteVid':
                 return <NoteVid key={note.id} note={note} />
             // case 'NoteAud':
             //     return <NoteAud {note} />
@@ -27,7 +27,6 @@ export function NotesList({ notes }) {
     return (
         <div className="notes-list container">
             {notes.map(note => DynamicCmp(note))}
-            
         </div>
     )
 }

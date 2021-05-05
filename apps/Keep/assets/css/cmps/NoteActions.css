@@ -1,0 +1,19 @@
+.fa {
+    font-family: icons;
+}
+
+.fas {
+    font-family: icons-solid;
+}
+
+.fa-bookmark::after {
+    content: "\f02e";
+}
+
+.fa-trash-alt::after {
+    content: "\f2ed";
+}
+
+.fa-palette::after {
+    content: "\f53f";
+}
