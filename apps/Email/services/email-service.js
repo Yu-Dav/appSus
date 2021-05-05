@@ -11,6 +11,7 @@ const KEY = 'emails';
 var gEmails;
 
 _createEmails();
+
 function query() {
     return Promise.resolve(gEmails)
 }

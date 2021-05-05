@@ -1,6 +1,7 @@
 .notes-list {
     background-color: #f0e3ca;
     column-count: 1;
+    margin-bottom: 2em;
 }
 
 @media (min-width: 460px) {
