@@ -28,7 +28,7 @@ export class KeepApp extends React.Component {
 
     onDeleteNote = (noteId) => {
         // console.log('note to delete: ', noteId);
-        keepService.deleteNote(noteId).then(red => this.loadNotes())
+        keepService.deleteNote(noteId).then(res => this.loadNotes())
     }
 
     onAddNewNote = (ev, note) => {
