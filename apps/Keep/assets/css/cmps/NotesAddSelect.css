@@ -1,7 +1,7 @@
 
 
 .notes-add input[type=radio] {
-   /* display: none; */
+   display: none;
 }
 
 .notes-add-btns>*:not(:last-child) {
@@ -12,9 +12,14 @@ i:hover {
     color: #1ab792;
 }
 
-.notes-add input[type=radio]:checked i {
+.clicked {
     color: lightcoral;
 }
+/* 
+
+i .notes-add input[type=radio]:checked {
+    color: lightcoral;
+} */
 
 .fa {
     font-family: icons;

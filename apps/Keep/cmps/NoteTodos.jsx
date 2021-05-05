@@ -1,16 +1,16 @@
 import { NoteActions } from './NoteActions.jsx'
 
-export function NoteTodos({ note }) {
-    const {todos} = note.info
+export function NoteTodos({ note,onDeleteNote, onPinNote }) {
+    const { todos, label } = note.info
     return (
         <div className="note-preview">
-            {note.info.label}
+            <h1>{label}</h1>
             <ul>
-                {todos.map((todo,idx)=>{
+                {todos.map((todo, idx) => {
                     return <li key={idx}>{todo.txt}</li>
                 })}
             </ul>
-            <NoteActions/>
+            <NoteActions onDeleteNote={onDeleteNote}  onPinNote={onPinNote} noteId={note.id}/>
         </div>
     )
 }

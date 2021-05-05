@@ -5,7 +5,7 @@
 @import url("basics/fonts.css");
 @import url("basics/base.css");
 @import url("helpers/helpers.css");
-
+@import 'basics/Loading.css';
 
 /* EmailApp */
 @import '../../apps/Email/assets/css/email-main.css';
