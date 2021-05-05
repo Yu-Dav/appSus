@@ -14,10 +14,9 @@ export function App() {
             <AppHeader />
             <main>
                 <Switch>
-                    <Route component={EmailDetails} path="/Email/:Email.id"/>
-
+            
                     <Route component={KeepApp} path="/keep" />
-                    <Route component={EmailApp} path="/Email" />
+                    <Route component={EmailApp} path="/email" />
                     <Route component={AboutUs} path="/about" />
                     <Route component={Home} path="/" />
                     {/* If we want to send props to a route: */}

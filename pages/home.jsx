@@ -7,7 +7,7 @@ export class Home extends React.Component {
             <section className="home-page container">
                 <div className="hero">Hero - Welcome to your app</div>
 
-                <Link to="/Email">
+                <Link to="/email">
                     <div className="mail">link to mail</div>
                 </Link>
 

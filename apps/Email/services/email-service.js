@@ -4,6 +4,7 @@ import { storageService } from '../../../services/storage-service.js';
 export const emailService = {
     query,  //TODO- use also filtering
     addEmail,
+    setIsRead
 }
 
 const KEY = 'emails';
@@ -28,6 +29,26 @@ function _createEmails() {
     }
     gEmails = emails;
     _saveEmailsToStorage();
+}
+
+function _getIdxById(id) {
+    return gEmails.findIndex(email => id === emailId)
+}
+
+function setIsRead(emailId) {
+    const idx = _getIdxById(emailId)
+    gEmails[idx].isRead = !gEmails[idx].isRead
+    _saveEmailsToStorage();
+    return Promise.resolve()
+
+}
+
+function deleteEmail(emailId) {
+    const idx = _getIdxById(emailId)
+    if (gEmails[idx].isTrash) gEmails.splice(idx, 1)
+    else gEmails[idx].isTrash = true
+    _saveEmailsToStorage();
+    return Promise.resolve()
 }
 
 function addEmail(email) {
