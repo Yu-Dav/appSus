@@ -1,0 +1,11 @@
+.email-compose-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+
+.email-compose {
+    background-color: grey;
+    padding: 10px
+}

@@ -4,4 +4,5 @@
 
 /* cmps */
 
-@import './cmps/EmailPreview.css'
+@import './cmps/EmailPreview.css';
+@import './cmps/EmailCompose.css';
