@@ -1,6 +1,5 @@
 export function ShowTime({ timeStamp }) {
-
-    console.log(timeStamp)
+    console.log('timeStamp',timeStamp)
     var d = new Date(timeStamp * 1000);
     // Hours part from the timestamp
     var hr = d.getHours();

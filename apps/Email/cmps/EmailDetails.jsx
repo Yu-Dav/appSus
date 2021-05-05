@@ -1,9 +1,9 @@
 
 
-export function EmailDetails() {
+export function EmailDetails({ email}) {
     return (
         <div>
-            <p>this is working</p>
+            <p>{email.body}</p>
         </div>
     )
 }
