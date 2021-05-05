@@ -22,6 +22,12 @@ export class EmailApp extends React.Component {
         this.setState({ isComposed: !this.state.isComposed })
     }
 
+    onSendingEmail = (ev,email) => {
+        ev.preventDefault()
+        emailService.addEmail(email)
+        this.onOpenModal()
+    }
+
 
     render() {
         const { emails } = this.state
@@ -29,9 +35,9 @@ export class EmailApp extends React.Component {
         if (!emails) return <div>Loading...</div> //TODO- use cmp loading
         return (
             <section className="email-app flex">
-                <div className="email-contols"></div>
+                <div className="email-controls"></div>
                 <button onClick={() => this.onOpenModal()}>compose</button>
-                {isComposed && <EmailCompose />}
+                {isComposed && <EmailCompose onSendingEmail={this.onSendingEmail} />}
                 <EmailList emails={emails} />
             </section>
         )
