@@ -43,7 +43,7 @@ export class NotesAdd extends React.Component {
                     onSubmit={() => this.props.onAddNewNote(event, this.state)}>
                        
                         <input type="text" name="input" placeholder={this.getPlaceholder()} 
-                        value={input} onChange={this.handleChange} onBlur={this.onInputBlur} />
+                         autoComplete="off" value={input} onChange={this.handleChange} onBlur={this.onInputBlur} />
                        
                         {/* <button className="btn">Save</button> */}
 

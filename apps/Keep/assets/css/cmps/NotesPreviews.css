@@ -5,6 +5,7 @@
     padding: 1em;
     break-inside: avoid;
     overflow: hidden;
+    transition: 0.5s;
 }
 
 .note-preview img {

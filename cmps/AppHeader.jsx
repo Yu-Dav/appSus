@@ -13,8 +13,8 @@ export class AppHeader extends React.Component {
         return (
             <header>
                 <nav className="app-header container flex space-btw align-center">
-                    <div className="">
-                        <img src="../assets/img/logo.png" alt="logo" />
+                    <div className="bounce-in-top">
+                        <img src="assets/img/logo.png" alt="logo" />
                         <h2 className="title">.appSus </h2>
                     </div>
                     <ul className="clean-list flex">

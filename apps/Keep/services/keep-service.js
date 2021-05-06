@@ -8,6 +8,7 @@ export const keepService = {
   pinNote,
   onOpenClrCmp,
   changeNoteClr,
+  onEditNote,
 };
 
 const KEY = "notesDB";
@@ -22,8 +23,15 @@ function query() {
   return Promise.resolve(notes);
 }
 
+function onEditNote(txt, id) {
+  // need to handle different types of notes.
+  const idx = gNotes.findIndex((note) => note.id === id);
+  gNotes[idx].info.txt = txt;
+  _saveNotesToStorage();
+  return Promise.resolve();
+}
+
 function changeNoteClr(id, clr) {
-  console.log("Service got id =", id, "for clr =", clr);
   const idx = gNotes.findIndex((note) => note.id === id);
   gNotes[idx].style.backgroundColor = clr;
   _saveNotesToStorage();
@@ -59,7 +67,6 @@ function addNewNote(note) {
 }
 
 function _createNewNote(note) {
-  // console.log("service adding note =", note);
   const newNote = {
     id: utilService.makeId(),
     type: note.noteType,
@@ -74,17 +81,23 @@ function _createNewNote(note) {
 }
 
 function _createNewNoteInfo(noteType, noteInput) {
+  console.log("noteType =", noteType);
+  console.log("noteInput =", noteInput);
   if (noteType === "noteText") return { txt: noteInput };
-  if (noteType === "noteVid") return { url: noteInput };
+  if (noteType === "noteVid") {
+    const idx = noteInput.indexOf("v=");
+    const vidId=noteInput.substring(idx+2)
+    return { url: vidId };
+  }
   if (noteType === "noteImg") return _createNewImg(noteInput);
   if (noteType === "noteTodos") return _createNewTodo(noteInput);
 }
 
 function _createNewImg(input) {
+  console.log("img input  =", input);
   return {
-    title: "the title",
-    url:
-      "https://agfstorage.blob.core.windows.net/misc/FP_es/2021/03/30/emextext.jpeg",
+    // title: "the title",
+    url: input,
   };
 }
 
@@ -174,7 +187,7 @@ function _createNotes() {
         isPinned: false,
         isStyleEditing: false,
         info: {
-          url: "https://www.youtube.com/watch?v=V08j6xzaDrI",
+          url: "https://www.youtube.com/embed?v=V08j6xzaDrI",
         },
         style: {
           backgroundColor: "#b8c4ad",

@@ -3,21 +3,36 @@ import { Loading } from '../../../cmps/Loading.jsx'
 import { keepService } from '../services/keep-service.js'
 import { NotesAdd } from '../cmps/NotesAdd.jsx'
 import { NotesList } from '../cmps/NotesList.jsx'
+import { NoteEditContent } from '../cmps/NoteEditContent.jsx'
+
 
 export class KeepApp extends React.Component {
     state = {
-        notes: null
+        notes: null,
+        noteEdit: {
+            isEditing: false,
+            editNoteId: null
+        }
     }
     componentDidMount() {
-        this.loadNotes()
-    }
-    loadNotes() {
         keepService.query().then(notes => {
             setTimeout(() => this.setState({ notes }), 1000)
         })
     }
+    
+    loadNotes() {
+        keepService.query().then(notes => this.setState({ notes }), 1000)
+
+    }
     onOpenEditModal = (noteId) => {
-        console.log('Opening modal for =', noteId)
+        this.setState({ ...this.state, noteEdit: { isEditing: true, editNoteId: noteId } })
+    }
+    onSaveEditChange = (input) => {
+        const id = this.state.noteEdit.editNoteId
+        keepService.onEditNote(input, id).then(res => {
+            this.setState({ ...this.state, noteEdit: { isEditing: false, editNoteId: null } })
+            this.loadNotes()
+        })
     }
     onPinNote = (noteId) => {
         keepService.pinNote(noteId).then(res => this.loadNotes())
@@ -43,6 +58,9 @@ export class KeepApp extends React.Component {
             <section className="notes-app">
                 <NotesAdd onAddNewNote={this.onAddNewNote} />
 
+                {this.state.noteEdit.isEditing && <NoteEditContent onSaveEditChange={this.onSaveEditChange} />}
+
+
                 <NotesList notes={notes.filter(note => note.isPinned)} onDeleteNote={this.onDeleteNote}
                     onPinNote={this.onPinNote} onOpenClr={this.onOpenClr} onChangeNoteClr={this.onChangeNoteClr}
                     onOpenEditModal={this.onOpenEditModal} />
@@ -50,7 +68,11 @@ export class KeepApp extends React.Component {
                 <NotesList notes={notes.filter(note => !note.isPinned)} onDeleteNote={this.onDeleteNote}
                     onPinNote={this.onPinNote} onOpenClr={this.onOpenClr} onChangeNoteClr={this.onChangeNoteClr}
                     onOpenEditModal={this.onOpenEditModal} />
+
+
             </section>
         )
     }
 }
+
+

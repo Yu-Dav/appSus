@@ -35,6 +35,7 @@
     padding: .25em .75em;
     text-decoration: none;
     border: none;
+    cursor: pointer;
 }
 
 .btn:hover {

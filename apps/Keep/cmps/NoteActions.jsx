@@ -1,6 +1,6 @@
 
 export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEditModal }) {
-    console.log('note =', note)
+    // console.log('note =', note)
     return (
         <div className="note-actions">
             {/* clr of a pinned note should be changed by class */}

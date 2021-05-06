@@ -9,19 +9,19 @@ export function NotesList({ notes, onDeleteNote, onPinNote,  onOpenClr, onChange
         switch (note.type) {
             case 'noteText':
                 return <NoteTxt key={note.id} note={note} onDeleteNote={onDeleteNote} 
-                onPinNote={onPinNote}  onOpenClr={onOpenClr}  onChangeNoteClr={onChangeNoteClr}
+                onPinNote={onPinNote} onOpenClr={onOpenClr} onChangeNoteClr={onChangeNoteClr}
                 onOpenEditModal={onOpenEditModal}/>
             case 'noteImg':
-                return <NoteImg key={note.id} note={note} onDeleteNote={onDeleteNote}  
-                onPinNote={onPinNote}  onOpenClr={onOpenClr}  onChangeNoteClr={onChangeNoteClr}
+                return <NoteImg key={note.id} note={note} onDeleteNote={onDeleteNote} 
+                onPinNote={onPinNote} onOpenClr={onOpenClr} onChangeNoteClr={onChangeNoteClr}
                 onOpenEditModal={onOpenEditModal}/>
             case 'noteTodos':
-                return <NoteTodos key={note.id} note={note} onDeleteNote={onDeleteNote}  
-                onPinNote={onPinNote}  onOpenClr={onOpenClr}  onChangeNoteClr={onChangeNoteClr}
+                return <NoteTodos key={note.id} note={note} onDeleteNote={onDeleteNote} 
+                onPinNote={onPinNote} onOpenClr={onOpenClr} onChangeNoteClr={onChangeNoteClr}
                 onOpenEditModal={onOpenEditModal}/>
             case 'noteVid':
                 return <NoteVid key={note.id} note={note} onDeleteNote={onDeleteNote} 
-                onPinNote={onPinNote}  onOpenClr={onOpenClr}  onChangeNoteClr={onChangeNoteClr}
+                onPinNote={onPinNote} onOpenClr={onOpenClr} onChangeNoteClr={onChangeNoteClr}
                 onOpenEditModal={onOpenEditModal}/>
             // case 'NoteAud':
             //     return <NoteAud {note} />
@@ -33,6 +33,7 @@ export function NotesList({ notes, onDeleteNote, onPinNote,  onOpenClr, onChange
     return (
         <div className="notes-list container">
             {notes.map(note => DynamicCmp(note))}
+            
         </div>
     )
 }
