@@ -5,6 +5,7 @@ export const emailService = {
     query,  //TODO- use also filtering
     addEmail,
     setIsRead,
+    setIsStarred,
     deleteEmail
 }
 
@@ -21,12 +22,12 @@ function _createEmails() {
     var emails = storageService.loadFromStorage(KEY);
     if (!emails || !emails.length) {
         emails = [
-            { from: 'Paco El', id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!',isTrash: false, isRead: false, sentAt: 1620201753247 },
-            { from: 'Yuval Da', id: utilService.makeId(), subject: 'Sprint 3', body: 'Lets zoom',isTrash: false, isRead: false, sentAt: 1620200994854 },
-            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place',isTrash: false, isRead: false, sentAt: Date.now() },
-            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place',isTrash: false, isRead: false, sentAt: Date.now() },
-            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place',isTrash: false, isRead: false, sentAt: Date.now() },
-            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place',isTrash: false, isRead: false, sentAt: 1551133930594 },
+            { from: 'Paco El', id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!', isTrash: false, isRead: false, sentAt: 1620201753247, isStarred: false },
+            { from: 'Yuval Da', id: utilService.makeId(), subject: 'Sprint 3', body: 'Lets zoom', isTrash: false, isRead: false, sentAt: 1620200994854, isStarred: false },
+            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place', isTrash: false, isRead: false, sentAt: Date.now(), isStarred: false },
+            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place', isTrash: false, isRead: false, sentAt: Date.now(), isStarred: false },
+            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place', isTrash: false, isRead: false, sentAt: Date.now(), isStarred: false },
+            { from: 'Etgar Keret', id: utilService.makeId(), subject: 'Did you see my pig', body: 'Last time I saw Peshazon was at your place', isTrash: false, isRead: false, sentAt: 1551133930594, isStarred: false },
         ]
     }
     gEmails = emails;
@@ -38,12 +39,17 @@ function _getIdxById(id) {
 }
 
 function setIsRead(emailId) {
-    console.log('sevice-id', emailId);
     const idx = _getIdxById(emailId)
     gEmails[idx].isRead = !gEmails[idx].isRead
     _saveEmailsToStorage();
     return Promise.resolve()
+}
 
+function setIsStarred(emailId){
+    const idx = _getIdxById(emailId)
+    gEmails[idx].isStarred = !gEmails[idx].isStarred
+    _saveEmailsToStorage();
+    return Promise.resolve()
 }
 
 function deleteEmail(emailId) {
@@ -62,7 +68,8 @@ function addEmail(email) {
         body: email.body,
         isTrash: false,
         isRead: false,
-        sentAt: Date.now()
+        sentAt: Date.now(),
+        isStarred: false,
     }
     gEmails.unshift(newEmail)
     _saveEmailsToStorage()

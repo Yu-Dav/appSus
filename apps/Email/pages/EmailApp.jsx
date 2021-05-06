@@ -10,7 +10,6 @@ export class EmailApp extends React.Component {
         emails: null,
         isComposed: false,
         view: 'inbox'
-
     }
     componentDidMount() {
         this.loadEmails()
@@ -26,9 +25,16 @@ export class EmailApp extends React.Component {
         emailService.addEmail(email)
         this.onOpenModal()
     }
+
     onSetReadEmail = (emailId) => {
         emailService.setIsRead(emailId).then(this.loadEmails)
     }
+
+    onSetStarEmail = (emailId)=> {
+        emailService.setIsStarred(emailId).then(this.loadEmails)
+
+    }
+
     onSetView = (view) => {
         this.setState({ view })
     }
@@ -36,6 +42,7 @@ export class EmailApp extends React.Component {
         const { emails, view } = this.state
         if (view === 'inbox') return emails.filter(email => !email.isTrash)
         if (view === 'trash') return emails.filter(email => email.isTrash)
+        if (view ==='star') return emails.filter (email => email.isStarred)
     }
     onDeleteEmail = (emailId) => {
         emailService.deleteEmail(emailId)
@@ -47,12 +54,11 @@ export class EmailApp extends React.Component {
         if (!emails) return <div>Loading...</div> //TODO- use cmp loading
         return (
             <section className="email-app flex">
-                {/* moved to emailsidebar */}
                 {isComposed && <EmailCompose onSendingEmail={this.onSendingEmail} />}
                 <EmailSideBar onSetView={this.onSetView} onOpenModal={this.onOpenModal} />
                 <Switch>
                     <Route path="/email" render={(props) => (
-                        <EmailList {...props} emails={this.setEmailsForDisplay()} onSetReadEmail={this.onSetReadEmail} onDeleteEmail={this.onDeleteEmail} />
+                        <EmailList {...props} emails={this.setEmailsForDisplay()} onSetReadEmail={this.onSetReadEmail} onDeleteEmail={this.onDeleteEmail} onSetStarEmail={this.onSetStarEmail} />
                     )} />
                 </Switch>
             </section>
