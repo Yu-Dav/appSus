@@ -16,7 +16,6 @@ export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEd
             <i onClick={() => onDeleteNote(note.id)}
                 title="Delete" className="fa fa-trash-alt"></i>
 
-
         </div>
     )
 }
