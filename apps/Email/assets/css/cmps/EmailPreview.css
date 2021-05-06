@@ -1,11 +1,19 @@
-.email-preview span{
+.email-preview span {
     margin-inline-end: 10px;
 }
 
-a:hover{
+a:hover {
     font-weight: normal;
 }
 
-.email-preview.bold{
+.email-preview.bold {
     font-weight: bold;
+}
+
+.fa-star::after {
+    content: "\f005"
+}
+
+.fa-star.yellow {
+    color: #fcca3d;
 }
