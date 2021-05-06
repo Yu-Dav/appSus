@@ -6,6 +6,7 @@ export const keepService = {
   addNewNote,
   deleteNote,
   pinNote,
+  onOpenClrCmp,
 };
 
 const KEY = "notesDB";
@@ -20,16 +21,22 @@ function query() {
   return Promise.resolve(notes);
 }
 
-function pinNote(id) {
-  console.log ('Pinning note =',id)
+function onOpenClrCmp(id) {
+  const idx = gNotes.findIndex((note) => note.id === id);
+  gNotes[idx].isStyleEditing = !gNotes[idx].isStyleEditing;
+  _saveNotesToStorage();
   return Promise.resolve();
+}
 
+function pinNote(id) {
+  const idx = gNotes.findIndex((note) => note.id === id);
+  gNotes[idx].isPinned = !gNotes[idx].isPinned;
+  _saveNotesToStorage();
+  return Promise.resolve();
 }
 
 function deleteNote(id) {
-  // console.log("service deleting: ", id);
   const idx = gNotes.findIndex((note) => note.id === id);
-  // console.log("idx =", idx);
   gNotes.splice(idx, 1);
   _saveNotesToStorage();
   return Promise.resolve();
@@ -48,19 +55,23 @@ function _createNewNote(note) {
     id: utilService.makeId(),
     type: note.noteType,
     isPinned: false,
-    info: createNewNoteInfo(note.noteType, note.input),
+    isStyleEditing: false,
+    info: _createNewNoteInfo(note.noteType, note.input),
+    style: {
+      backgroundColor: "#b8c4ad",
+    },
   };
   return newNote;
 }
 
-function createNewNoteInfo(noteType, noteInput) {
+function _createNewNoteInfo(noteType, noteInput) {
   if (noteType === "noteText") return { txt: noteInput };
   if (noteType === "noteVid") return { url: noteInput };
-  if (noteType === "noteImg") return createNewNoteTodoImg(noteInput);
-  if (noteType === "noteTodos") return createNewNoteTodo(noteInput);
+  if (noteType === "noteImg") return _createNewImg(noteInput);
+  if (noteType === "noteTodos") return _createNewTodo(noteInput);
 }
 
-function createNewNoteTodoImg(input) {
+function _createNewImg(input) {
   return {
     title: "the title",
     url:
@@ -68,8 +79,8 @@ function createNewNoteTodoImg(input) {
   };
 }
 
-function createNewNoteTodo(input) {
-  const todosArr = input.split(",");
+function _createNewTodo(input) {
+  const todosArr = input.split(/[\s,]+/);
   // console.log("todosArr =", todosArr);
   const todos = {
     label: "Todos",
@@ -94,8 +105,12 @@ function _createNotes() {
         id: utilService.makeId(),
         type: "noteText", // for TEXT
         isPinned: true,
+        isStyleEditing: false,
         info: {
           txt: "Fullstack Me Baby!",
+        },
+        style: {
+          backgroundColor: "#b8c4ad",
         },
       },
 
@@ -103,8 +118,12 @@ function _createNotes() {
         id: utilService.makeId(),
         type: "noteText", // for TEXT
         isPinned: false,
+        isStyleEditing: false,
         info: {
           txt: "Another note",
+        },
+        style: {
+          backgroundColor: "#b8c4ad",
         },
       },
 
@@ -112,13 +131,14 @@ function _createNotes() {
         id: utilService.makeId(),
         type: "noteImg", // for IMG
         isPinned: false,
+        isStyleEditing: false,
         info: {
           url:
             "http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/banana.png",
           title: "Me playing Mi",
         },
         style: {
-          backgroundColor: "#00d",
+          backgroundColor: "#b8c4ad",
         },
       },
 
@@ -126,6 +146,7 @@ function _createNotes() {
         id: utilService.makeId(),
         type: "noteTodos", // for TODO
         isPinned: false,
+        isStyleEditing: false,
         info: {
           label: "How was it:",
           todos: [
@@ -133,14 +154,21 @@ function _createNotes() {
             { txt: "Do this", doneAt: 187111111 },
           ],
         },
+        style: {
+          backgroundColor: "#b8c4ad",
+        },
       },
 
       {
         id: utilService.makeId(),
         type: "noteVid", // for VID
         isPinned: false,
+        isStyleEditing: false,
         info: {
           url: "https://www.youtube.com/watch?v=V08j6xzaDrI",
+        },
+        style: {
+          backgroundColor: "#b8c4ad",
         },
       },
     ];

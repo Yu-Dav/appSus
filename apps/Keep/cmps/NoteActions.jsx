@@ -1,10 +1,20 @@
 
-export function NoteActions({ noteId, onDeleteNote, onPinNote }) {
+export function NoteActions({  note, onDeleteNote, onPinNote, onChangeNoteBcgClr }) {
+    console.log('note =', note)
     return (
-        <div>
-            <i onClick={() => onPinNote(noteId)} title="Bookmark note" className="fa fa-bookmark"></i>
-            <i title="Change background color" className="fas fa-palette"></i>
-            <i onClick={() => onDeleteNote(noteId)} title="Delete" className="fa fa-trash-alt"></i>
+        <div className="note-actions">
+            {/* clr of a pinned note should be changed by class */}
+            <i onClick={() => onPinNote(note.id)} className={note.isPinned? "pinned fas fa-thumbtack" : "fas fa-thumbtack"}
+                title="Pin to top" className="fas fa-thumbtack"></i>
+
+            <i onClick={() => onChangeNoteBcgClr(note.id)}
+                title="Change background color" className="fas fa-palette"></i>
+
+            <i onClick={() => onDeleteNote(note.id)}
+                title="Delete" className="fa fa-trash-alt"></i>
         </div>
     )
 }
+
+
+// className={this.state.clicked === 'noteImg' ? "clicked fas fa-image": "fas fa-image"}

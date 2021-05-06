@@ -1,3 +1,16 @@
+.note-actions {
+    font-size: .75em;
+    margin-top: 15px;
+}
+
+.pinned {
+    color: rgb(255, 255, 255);
+}
+
+.note-actions > *:not(:last-child) {
+    margin-inline-end: 10px;
+}
+
 .fa {
     font-family: icons;
 }
@@ -6,8 +19,8 @@
     font-family: icons-solid;
 }
 
-.fa-bookmark::after {
-    content: "\f02e";
+.fa-thumbtack::after {
+    content: "\f08d";
 }
 
 .fa-trash-alt::after {
@@ -17,3 +30,5 @@
 .fa-palette::after {
     content: "\f53f";
 }
+
+

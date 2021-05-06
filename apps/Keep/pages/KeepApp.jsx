@@ -21,18 +21,22 @@ export class KeepApp extends React.Component {
 
     onPinNote = (noteId) => {
         keepService.pinNote(noteId).then(
-            console.log ('pin done',)
-            // res => this.loadNotes()
-            )
+            // console.log ('pin done',)
+            res => this.loadNotes()
+        )
+    }
+
+    onChangeNoteBcgClr = (noteId) => {
+        keepService.onOpenClrCmp(noteId).then(res => this.loadNotes())
     }
 
     onDeleteNote = (noteId) => {
-        // console.log('note to delete: ', noteId);
         keepService.deleteNote(noteId).then(res => this.loadNotes())
     }
 
     onAddNewNote = (ev, note) => {
         ev.preventDefault()
+        if(!note.input) return
         keepService.addNewNote(note).then(res => this.loadNotes())
     }
 
@@ -43,9 +47,11 @@ export class KeepApp extends React.Component {
             <section className="notes-app">
                 <NotesAdd onAddNewNote={this.onAddNewNote} />
                 Pinned:
-                <NotesList notes={notes.filter(note => note.isPinned)} onDeleteNote={this.onDeleteNote} onPinNote={this.onPinNote}/>
+                <NotesList notes={notes.filter(note => note.isPinned)} onDeleteNote={this.onDeleteNote} 
+                onPinNote={this.onPinNote} onChangeNoteBcgClr={this.onChangeNoteBcgClr}/>
                 Not pinned:
-                <NotesList notes={notes} onDeleteNote={this.onDeleteNote} onPinNote={this.onPinNote}/>
+                <NotesList notes={notes.filter(note => !note.isPinned)} onDeleteNote={this.onDeleteNote} 
+                onPinNote={this.onPinNote} onChangeNoteBcgClr={this.onChangeNoteBcgClr} />
             </section>
         )
     }
