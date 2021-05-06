@@ -1,6 +1,7 @@
 import { Loading } from '../../../cmps/Loading.jsx'
 import { EmailList } from '../cmps/EmailList.jsx'
 import { EmailFilter } from '../cmps/EmailFilter.jsx'
+import { EmailSearch } from '../cmps/EmailSearch.jsx' //todo
 import { EmailCompose } from '../cmps/EmailCompose.jsx'
 import { EmailSideBar } from '../cmps/EmailSideBar.jsx'
 import { emailService } from '../services/email-service.js'
@@ -10,6 +11,7 @@ const { Route, Switch } = ReactRouterDOM
 export class EmailApp extends React.Component {
     state = {
         emails: null,
+        filterBy: null,
         isComposed: false,
         view: 'inbox'
     }
@@ -19,7 +21,7 @@ export class EmailApp extends React.Component {
     }
 
     loadEmails = () => {
-        emailService.query().then(emails => this.setState({ emails }))
+        emailService.query(this.state.filterBy).then(emails => this.setState({ emails }))
     }
 
     onOpenModal = () => {
@@ -36,14 +38,17 @@ export class EmailApp extends React.Component {
         emailService.setIsRead(emailId).then(this.loadEmails)
     }
 
-    onSetStarEmail = (ev, emailId) => {
-        console.log(ev)
-        ev.stopPropagation()  // does not work
+    onSetStarEmail = ( emailId) => {
+     
         emailService.setIsStarred(emailId).then(this.loadEmails)
     }
 
     onSetView = (view) => {
         this.setState({ view })
+    }
+
+    onSetFilter = (filterBy) => {
+        this.setState({ filterBy }, this.loadEmails)
     }
 
     setEmailsForDisplay = () => {
@@ -60,19 +65,18 @@ export class EmailApp extends React.Component {
         emailService.deleteEmail(emailId)
             .then((res) => this.loadEmails())
     }
-    
+
     render() {
         const { emails } = this.state
         const { isComposed } = this.state
         if (!emails) return <Loading />
         return (
             <React.Fragment >
+                <EmailSearch onSetView={this.onSetFilter} />
                 <EmailFilter onSetView={this.onSetView} />
                 <section className="email-app flex">
-
                     {isComposed && <EmailCompose onSendingEmail={this.onSendingEmail} />}
                     <EmailSideBar onSetView={this.onSetView} onOpenModal={this.onOpenModal} />
-
                     <Switch>
                         <Route path="/email" render={(props) => (
                             <EmailList {...props} emails={this.setEmailsForDisplay()} onSetReadEmail={this.onSetReadEmail} onDeleteEmail={this.onDeleteEmail} onSetStarEmail={this.onSetStarEmail} />

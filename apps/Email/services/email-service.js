@@ -14,7 +14,18 @@ var gEmails;
 
 _createEmails();
 
-function query() {
+function query(filterBy) {
+    if (filterBy) {
+        var { txt } = filterBy
+        const filteredEmails = gEmails.filter(email => {
+            const regex = new RegExp(txt, 'i')
+            return (
+                regex.test(email.subject) ||
+                regex.test(email.from) ||
+                regex.test(email.body))
+        })
+        return Promise.resolve(filteredEmails)
+    }
     return Promise.resolve(gEmails)
 }
 
@@ -45,7 +56,7 @@ function setIsRead(emailId) {
     return Promise.resolve()
 }
 
-function setIsStarred(emailId){
+function setIsStarred(emailId) {
     const idx = _getIdxById(emailId)
     gEmails[idx].isStarred = !gEmails[idx].isStarred
     _saveEmailsToStorage();

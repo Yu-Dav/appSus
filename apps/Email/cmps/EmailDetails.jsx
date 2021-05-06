@@ -11,4 +11,4 @@ export function EmailDetails({email,onDeleteEmail}) {
     )
 }
 
-// later would be a class
+
