@@ -1,0 +1,27 @@
+@font-face {
+    font-family: icons;
+    src: url(../../fonts/fa-regular-400.ttf);
+}
+
+@font-face {
+    font-family: icons-solid;
+    src: url(../../fonts/fa-solid-900.ttf);
+}
+
+@font-face {
+    font-family: alfa ;
+    src: url(../../fonts/AlfaSlabOne.ttf);
+}
+
+@font-face {
+    font-family: sans-pro;
+    src: url(../../fonts/SourceSansPro.ttf);
+}
+
+.fa {
+    font-family: icons;
+}
+
+.fas {
+    font-family: icons-solid;
+}

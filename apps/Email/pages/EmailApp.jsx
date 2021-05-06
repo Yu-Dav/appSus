@@ -12,19 +12,15 @@ export class EmailApp extends React.Component {
         isComposed: false,
         view: 'inbox'
     }
-
     componentDidMount() {
         this.loadEmails()
     }
-
     loadEmails = () => {
         emailService.query().then(emails => this.setState({ emails }))
     }
-
     onOpenModal = () => {
         this.setState({ isComposed: !this.state.isComposed })
     }
-
     onSendingEmail = (ev, email) => {
         ev.preventDefault()
         emailService.addEmail(email)
@@ -43,19 +39,16 @@ export class EmailApp extends React.Component {
     onSetView = (view) => {
         this.setState({ view })
     }
-
     setEmailsForDisplay = () => {
         const { emails, view } = this.state
         if (view === 'inbox') return emails.filter(email =>!email.isTrash)
         if (view === 'trash') return emails.filter(email => email.isTrash)
         if (view === 'star') return emails.filter(email => email.isStarred)
     }
-
     onDeleteEmail = (emailId) => {
         emailService.deleteEmail(emailId)
             .then((res) => this.loadEmails())
     }
-
     render() {
         const { emails } = this.state
         const { isComposed } = this.state

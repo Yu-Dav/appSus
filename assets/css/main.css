@@ -1,10 +1,10 @@
-@import url("basics/reset.css");
-@import url("basics/HomaPage.css");
-@import url("basics/MainNav.css");
-@import url("basics/UserMsg.css");
-@import url("basics/fonts.css");
-@import url("basics/base.css");
-@import url("helpers/helpers.css");
+@import 'basics/reset.css';
+@import 'basics/HomaPage.css';
+@import 'basics/MainNav.css';
+@import 'basics/UserMsg.css';
+@import 'basics/fonts.css';
+@import 'basics/base.css';
+@import 'helpers/helpers.css';
 @import 'basics/Loading.css';
 
 /* EmailApp */
@@ -13,23 +13,3 @@
 /* KeepApp */
 
 @import '../../apps/Keep/assets/css/keep-main.css';
-
-@font-face {
-    font-family: icons;
-    src: url(../fonts/fa-regular-400.ttf);
-}
-
-@font-face {
-    font-family: icons-solid;
-    src: url(../fonts/fa-solid-900.ttf);
-}
-
-@font-face {
-    font-family: alfa ;
-    src: url(../fonts/AlfaSlabOne.ttf);
-}
-
-@font-face {
-    font-family: sans-pro;
-    src: url(../fonts/SourceSansPro.ttf);
-}

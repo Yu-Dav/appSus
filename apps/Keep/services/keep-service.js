@@ -7,6 +7,7 @@ export const keepService = {
   deleteNote,
   pinNote,
   onOpenClrCmp,
+  changeNoteClr,
 };
 
 const KEY = "notesDB";
@@ -19,6 +20,14 @@ function query() {
   // console.log("notes =", notes);
   if (!notes || !notes.length) notes = gNotes;
   return Promise.resolve(notes);
+}
+
+function changeNoteClr(id, clr) {
+  console.log("Service got id =", id, "for clr =", clr);
+  const idx = gNotes.findIndex((note) => note.id === id);
+  gNotes[idx].style.backgroundColor = clr;
+  _saveNotesToStorage();
+  return Promise.resolve();
 }
 
 function onOpenClrCmp(id) {

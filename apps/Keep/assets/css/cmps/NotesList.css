@@ -1,7 +1,8 @@
 .notes-list {
     background-color: #f0e3ca;
     column-count: 1;
-    margin-bottom: 2em;
+    margin: 2em 0em;
+    padding: 1em;
 }
 
 @media (min-width: 460px) {
@@ -9,7 +10,6 @@
         column-count: 2;
     }
 }
-
 
 @media (min-width: 650px) {
     .notes-list {
