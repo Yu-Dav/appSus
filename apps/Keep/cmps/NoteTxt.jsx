@@ -1,7 +1,7 @@
 import { NoteActions } from './NoteActions.jsx'
 import { NoteBcgClr } from './NoteBcgClr.jsx'
 
-export function NoteTxt({ note, onDeleteNote, onPinNote, onChangeNoteBcgClr}) {
+export function NoteTxt({ note, onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr}) {
     // console.log ('var =',note)
     return (
         <div style={{backgroundColor: note.style.backgroundColor}} className="note-preview">
@@ -10,8 +10,8 @@ export function NoteTxt({ note, onDeleteNote, onPinNote, onChangeNoteBcgClr}) {
                 {note.info.txt}
             </p>
             <NoteActions onDeleteNote={onDeleteNote} onPinNote={onPinNote} 
-            onChangeNoteBcgClr={onChangeNoteBcgClr} note={note} />
-            {note.isStyleEditing && <NoteBcgClr/>}
+            onOpenClr={onOpenClr} note={note} />
+            {note.isStyleEditing && <NoteBcgClr onChangeNoteClr={onChangeNoteClr}/>}
         </div>
     )
 }

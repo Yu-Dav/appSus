@@ -2,7 +2,7 @@ import { NoteActions } from './NoteActions.jsx'
 import { NoteBcgClr } from './NoteBcgClr.jsx'
 
 
-export function NoteTodos({ note,onDeleteNote, onPinNote, onChangeNoteBcgClr }) {
+export function NoteTodos({ note,onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr }) {
     const { todos, label } = note.info
     return (
         <div className="note-preview">
@@ -13,8 +13,8 @@ export function NoteTodos({ note,onDeleteNote, onPinNote, onChangeNoteBcgClr }) 
                 })}
             </ul>
             <NoteActions onDeleteNote={onDeleteNote}  onPinNote={onPinNote} 
-            onChangeNoteBcgClr={onChangeNoteBcgClr} note={note}/>
-            {note.isStyleEditing && <NoteBcgClr/>}
+            onOpenClr={onOpenClr} note={note} />
+            {note.isStyleEditing && <NoteBcgClr onChangeNoteClr={onChangeNoteClr}/>}
 
         </div>
     )

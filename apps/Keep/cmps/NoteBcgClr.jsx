@@ -1,9 +1,9 @@
 // import React from 'react'
 
-export function NoteBcgClr() {
+export function NoteBcgClr({onChangeNoteClr}) {
     return (
         <div className="note-edit-bcg">
-            <span style={{ backgroundColor: 'red' }}></span>
+            <span style={{ backgroundColor: 'red' }} onClick={() => onChangeNoteClr()}></span>
             <span style={{ backgroundColor: 'blue' }}></span>
             <span style={{ backgroundColor: 'yellow' }}></span>
             <span style={{ backgroundColor: 'orange' }}></span>
@@ -12,3 +12,4 @@ export function NoteBcgClr() {
         </div>
     )
 }
+// onChangeNoteClr={onChangeNoteClr}

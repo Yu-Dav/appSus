@@ -2,7 +2,7 @@ import { NoteActions } from './NoteActions.jsx'
 import { NoteBcgClr } from './NoteBcgClr.jsx'
 
 
-export function NoteVid({ note, onDeleteNote, onPinNote,onChangeNoteBcgClr}) {
+export function NoteVid({ note, onDeleteNote, onPinNote,onOpenClr, onChangeNoteClr}) {
     return (
         // add overflow hidden in css
         <div className="note-preview">
@@ -10,8 +10,8 @@ export function NoteVid({ note, onDeleteNote, onPinNote,onChangeNoteBcgClr}) {
                 src="https://www.youtube.com/embed/V08j6xzaDrI">
             </iframe>
             <NoteActions onDeleteNote={onDeleteNote} onPinNote={onPinNote} 
-            onChangeNoteBcgClr={onChangeNoteBcgClr} note={note} />
-            {note.isStyleEditing && <NoteBcgClr/>}
+            onOpenClr={onOpenClr} note={note} />
+            {note.isStyleEditing && <NoteBcgClr onChangeNoteClr={onChangeNoteClr}/>}
 
         </div>
     )

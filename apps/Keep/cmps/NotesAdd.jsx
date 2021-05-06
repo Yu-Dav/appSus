@@ -4,7 +4,6 @@ import { NotesAddSelect } from './NotesAddSelect.jsx'
 export class NotesAdd extends React.Component {
     state = {
         noteType: 'noteText',
-        // input: this.getPlaceholder(),
         input: '',
     }
 
@@ -52,7 +51,6 @@ export class NotesAdd extends React.Component {
                 <div className="notes-add ">
 
                     <form className="flex justify-center align-center space-btw" onSubmit={() => this.props.onAddNewNote(event, this.state)}>
-                        {/* {noteType === ('noteImg' || 'noteVid') && <input placeholder="title" />} */}
                         <input type="text" name="input" placeholder={this.getPlaceholder()} value={input} onChange={this.handleChange} onBlur={this.onInputBlur} />
                         {/* <button className="btn">Save</button> */}
                         <NotesAddSelect handleChange={this.handleChange} />

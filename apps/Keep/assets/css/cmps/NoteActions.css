@@ -3,7 +3,7 @@
     margin-top: 15px;
 }
 
-.pinned {
+.pinned.fas.fa-thumbtack {
     color: rgb(255, 255, 255);
 }
 

@@ -26,8 +26,12 @@ export class KeepApp extends React.Component {
         )
     }
 
-    onChangeNoteBcgClr = (noteId) => {
+    onOpenClr = (noteId) => {
         keepService.onOpenClrCmp(noteId).then(res => this.loadNotes())
+    }
+
+    onChangeNoteClr = (noteId) => {
+        console.log ('keepApp got id =',noteId)
     }
 
     onDeleteNote = (noteId) => {
@@ -48,10 +52,11 @@ export class KeepApp extends React.Component {
                 <NotesAdd onAddNewNote={this.onAddNewNote} />
                 Pinned:
                 <NotesList notes={notes.filter(note => note.isPinned)} onDeleteNote={this.onDeleteNote} 
-                onPinNote={this.onPinNote} onChangeNoteBcgClr={this.onChangeNoteBcgClr}/>
+                onPinNote={this.onPinNote} onOpenClr={this.onOpenClr} onChangeNoteClr={this.onChangeNoteClr}/>
+
                 Not pinned:
                 <NotesList notes={notes.filter(note => !note.isPinned)} onDeleteNote={this.onDeleteNote} 
-                onPinNote={this.onPinNote} onChangeNoteBcgClr={this.onChangeNoteBcgClr} />
+                onPinNote={this.onPinNote} onOpenClr={this.onOpenClr}  onChangeNoteClr={this.onChangeNoteClr}/>
             </section>
         )
     }

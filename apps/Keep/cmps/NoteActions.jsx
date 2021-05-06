@@ -1,13 +1,13 @@
 
-export function NoteActions({  note, onDeleteNote, onPinNote, onChangeNoteBcgClr }) {
+export function NoteActions({  note, onDeleteNote, onPinNote, onOpenClr }) {
     console.log('note =', note)
     return (
         <div className="note-actions">
             {/* clr of a pinned note should be changed by class */}
             <i onClick={() => onPinNote(note.id)} className={note.isPinned? "pinned fas fa-thumbtack" : "fas fa-thumbtack"}
-                title="Pin to top" className="fas fa-thumbtack"></i>
+                title="Pin to top"></i>
 
-            <i onClick={() => onChangeNoteBcgClr(note.id)}
+            <i onClick={() => onOpenClr(note.id)}
                 title="Change background color" className="fas fa-palette"></i>
 
             <i onClick={() => onDeleteNote(note.id)}
