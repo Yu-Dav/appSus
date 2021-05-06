@@ -12,7 +12,7 @@ export function EmailPreview({ email, onSetReadEmail, onSetStarEmail, onDeleteEm
                     <span>{email.subject}</span>
                     <span><LongTxt txt={email.body} /></span>
                     <span><ShowTime timeStamp={email.sentAt} /></span>
-                    <span onClick={()=>onSetStarEmail(email.id)} className={email.isStarred ? "fas fa fa-star yellow" : "fa fa-star"} ></span>
+                    <span onClick={() => onSetStarEmail(event,email.id)} className={email.isStarred ? "fas fa fa-star yellow" : "fa fa-star"} ></span>
                 </section>
             </NavLink>
             <Switch>

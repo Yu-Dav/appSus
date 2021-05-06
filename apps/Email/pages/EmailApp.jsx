@@ -1,3 +1,4 @@
+import { Loading } from '../../../cmps/Loading.jsx'
 import { EmailList } from '../cmps/EmailList.jsx'
 import { EmailCompose } from '../cmps/EmailCompose.jsx'
 import { EmailSideBar } from '../cmps/EmailSideBar.jsx'
@@ -34,9 +35,9 @@ export class EmailApp extends React.Component {
         emailService.setIsRead(emailId).then(this.loadEmails)
     }
 
-    onSetStarEmail = (emailId)=> {
+    onSetStarEmail = (ev,emailId) => {
+        // ev.stopPropagation()
         emailService.setIsStarred(emailId).then(this.loadEmails)
-
     }
 
     onSetView = (view) => {
@@ -45,9 +46,9 @@ export class EmailApp extends React.Component {
 
     setEmailsForDisplay = () => {
         const { emails, view } = this.state
-        if (view === 'inbox') return emails.filter(email => !email.isTrash)
+        if (view === 'inbox') return emails.filter(email =>!email.isTrash)
         if (view === 'trash') return emails.filter(email => email.isTrash)
-        if (view ==='star') return emails.filter (email => email.isStarred)
+        if (view === 'star') return emails.filter(email => email.isStarred)
     }
 
     onDeleteEmail = (emailId) => {
@@ -58,7 +59,7 @@ export class EmailApp extends React.Component {
     render() {
         const { emails } = this.state
         const { isComposed } = this.state
-        if (!emails) return <div>Loading...</div> //TODO- use cmp loading
+        if (!emails) return <Loading/> //TODO- use cmp loading
         return (
             <section className="email-app flex">
                 {isComposed && <EmailCompose onSendingEmail={this.onSendingEmail} />}
