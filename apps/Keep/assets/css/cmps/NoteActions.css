@@ -11,13 +11,6 @@
     margin-inline-end: 10px;
 }
 
-.fa {
-    font-family: icons;
-}
-
-.fas {
-    font-family: icons-solid;
-}
 
 .fa-thumbtack::after {
     content: "\f08d";
@@ -31,4 +24,7 @@
     content: "\f53f";
 }
 
+.fa-edit::after {
+    content: "\f044";
+}
 

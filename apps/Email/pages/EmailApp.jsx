@@ -12,48 +12,35 @@ export class EmailApp extends React.Component {
         view: 'inbox'
 
     }
-
     componentDidMount() {
         this.loadEmails()
     }
-
     loadEmails = () => {
         emailService.query().then(emails => this.setState({ emails }))
     }
-
     onOpenModal = () => {
         this.setState({ isComposed: !this.state.isComposed })
     }
-
     onSendingEmail = (ev, email) => {
         ev.preventDefault()
         emailService.addEmail(email)
         this.onOpenModal()
     }
-
-
-
     onSetReadEmail = (emailId) => {
         emailService.setIsRead(emailId).then(this.loadEmails)
     }
-
-
     onSetView = (view) => {
         this.setState({ view })
     }
-
     setEmailsForDisplay = () => {
         const { emails, view } = this.state
         if (view === 'inbox') return emails.filter(email => !email.isTrash)
         if (view === 'trash') return emails.filter(email => email.isTrash)
     }
-
     onDeleteEmail = (emailId) => {
         emailService.deleteEmail(emailId)
             .then((res) => this.loadEmails())
     }
-
-
     render() {
         const { emails } = this.state
         const { isComposed } = this.state

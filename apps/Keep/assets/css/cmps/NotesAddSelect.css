@@ -8,27 +8,16 @@
     margin-inline-end: 10px;
 }
 
+.notes-add i {
+    font-size: 1.35em;
+}
+
 i:hover {
     color: #1ab792;
 }
 
 .clicked {
-    color: lightcoral;
-}
-/* 
-
-i .notes-add input[type=radio]:checked {
-    color: lightcoral;
-} */
-
-.fa {
-    font-family: icons;
-    font-size: 1.25em;
-}
-
-.fas {
-    font-family: icons-solid;
-    font-size: 1.5em;
+    color: rgb(24, 119, 126);
 }
 
 .fa-txt::after {
