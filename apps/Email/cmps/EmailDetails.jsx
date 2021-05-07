@@ -4,7 +4,12 @@ export function EmailDetails({email,onDeleteEmail}) {
     return (
         <Link to="/email">
         <div>
-            <button onClick={() => onDeleteEmail(email.id)}>Delete</button>
+            <i onClick={() => onDeleteEmail(email.id)}>Delete</i>
+            <Link to={`/keep?body=${email.body}`}>
+                <i>save as note</i>
+            {/* /email/compose?subject=my note&body= note about the rain */}
+
+            </Link>
             <p className="detailed-body">{email.body}</p>
         </div>
         </Link>
