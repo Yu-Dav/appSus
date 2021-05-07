@@ -7,17 +7,17 @@ export function EmailPreview({ email, onSetReadEmail, onSetStarEmail, onDeleteEm
     return (
         <React.Fragment>
             <NavLink to={`/email/${email.id}`}>
-                <section onClick={() => onSetReadEmail(email.id)} className={email.isRead ? "email-preview" : "email-preview bold"} >
-                    <span>{email.from}</span>
-                    <span>{email.subject}</span>
-                    <span><LongTxt txt={email.body} /></span>
-                    <span><ShowTime timeStamp={email.sentAt} /></span>
+                <div onClick={() => onSetReadEmail(email.id)} className={email.isRead ? "email-preview flex space-btw align-center grid-container" : "email-preview flex space-btw align-center grid-container bold"} >
+                    <span className="from">{email.from}</span>
+                    <span className="subject">{email.subject}</span>
+                    <span className="body"><LongTxt txt={email.body} /></span>
+                    <span className="date"><ShowTime timeStamp={email.sentAt} /></span>
                     <span onClick={(ev) => {
                         ev.stopPropagation()
                         onSetStarEmail(email.id)
                     }
-                    } className={email.isStarred ? "fas fa fa-star yellow" : "fa fa-star"} ></span>
-                </section>
+                    } className={email.isStarred ? "fas fa fa-star star yellow" : "fa fa-star star"} ></span>
+                </div>
             </NavLink>
             <Switch>
                 <Route path={`/email/${email.id}`} render={(props) => (
