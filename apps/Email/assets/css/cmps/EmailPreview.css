@@ -1,3 +1,7 @@
+.email-preview{
+    border: 2px solid green;
+}
+
 .email-preview span {
     margin-inline-end: 10px;
 }

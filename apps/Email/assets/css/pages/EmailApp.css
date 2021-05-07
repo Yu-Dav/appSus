@@ -2,7 +2,19 @@
     color: black;
 }
 
-/* only for debugging - delete! */
-.detailed-body{
-    color:rgb(35, 33, 36);
+.detailed-body {
+    color: rgb(35, 33, 36);
 }
+
+.email-filter {
+    border: none;
+    border-radius: 7px;
+}
+
+.email-filter:focus-visible {
+    outline-color: #1ab792;
+}
+
+
+
+/* color for header?     background-color: rgb(24 119 126 / 79%); */
