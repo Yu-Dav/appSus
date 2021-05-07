@@ -39,6 +39,10 @@
     cursor: pointer;
 }
 
+i {
+    cursor: pointer;
+}
+
 .btn-confirm {
     color: rgb(34 148 24);
     text-shadow: 1px 1px 1px #7c7c7c6b;

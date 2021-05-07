@@ -1,7 +1,6 @@
 import { utilService } from "../../../services/util-service.js";
 import { storageService } from "../../../services/storage-service.js";
-import { eventBusService } from '../../../services/event-bus-service.js'
-
+import { eventBusService } from "../../../services/event-bus-service.js";
 
 export const keepService = {
   query,
@@ -18,10 +17,16 @@ var gNotes;
 
 _createNotes();
 
-function query() {
+function query(filterBy) {
   var notes = storageService.loadFromStorage(KEY);
-  // console.log("notes =", notes);
   if (!notes || !notes.length) notes = gNotes;
+  console.log("filterBy =", filterBy);
+  if (filterBy) {
+    if (filterBy === "pinned")
+      return Promise.resolve(notes.filter((note) => note.isPinned));
+    return Promise.resolve(notes.filter((note) => note.type === filterBy));
+  }
+  // console.log("notes =", notes);
   return Promise.resolve(notes);
 }
 
@@ -49,9 +54,12 @@ function onOpenClrCmp(id) {
 
 function pinNote(id) {
   const idx = gNotes.findIndex((note) => note.id === id);
-  const text = gNotes[idx].isPinned? 'unpinned' : 'pinned successfully'
+  const text = gNotes[idx].isPinned ? "unpinned" : "pinned successfully";
   gNotes[idx].isPinned = !gNotes[idx].isPinned;
-  eventBusService.emit('show-user-msg', { txt: `You note was ${text}`, type: 'success' })
+  eventBusService.emit("show-user-msg", {
+    txt: `Your note was ${text}`,
+    type: "success",
+  });
   _saveNotesToStorage();
   return Promise.resolve();
 }
@@ -64,7 +72,7 @@ function deleteNote(id) {
 }
 
 function addNewNote(note) {
-  console.log ('note =',note)
+  console.log("note =", note);
   const newNote = _createNewNote(note);
   gNotes.unshift(newNote);
   _saveNotesToStorage();
@@ -86,16 +94,17 @@ function _createNewNote(note) {
 }
 
 function _createNewNoteInfo(noteType, noteInput) {
-  console.log("noteType =", noteType);
-  console.log("noteInput =", noteInput);
+  // console.log("noteType =", noteType);
+  // console.log("noteInput =", noteInput);
   if (noteType === "noteText") return { txt: noteInput };
   if (noteType === "noteVid") {
     const idx = noteInput.indexOf("v=");
-    const vidId=noteInput.substring(idx+2)
+    const vidId = noteInput.substring(idx + 2);
     return { url: vidId };
   }
   if (noteType === "noteImg") return _createNewImg(noteInput);
   if (noteType === "noteTodos") return _createNewTodo(noteInput);
+  if (noteType === "noteAud") return _createNewImg(noteInput);
 }
 
 function _createNewImg(input) {
@@ -169,6 +178,45 @@ function _createNotes() {
         },
       },
 
+      {
+        id: utilService.makeId(),
+        type: "noteAud", // for audio
+        isPinned: true,
+        isStyleEditing: false,
+        info: {
+          url:
+            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          // title: "Me playing Mi",
+        },
+        style: {
+          backgroundColor: "#b8c4ad",
+        },
+      },
+
+      {
+        id: utilService.makeId(),
+        type: "noteAud", // for audio
+        isPinned: false,
+        isStyleEditing: false,
+        info: {
+          url:
+            "https://actions.google.com/sounds/v1/science_fiction/windchime_drone.ogg",
+          // title: "Me playing Mi",
+        },
+        style: {
+          backgroundColor: "#b8c4ad",
+        },
+      },
+
+
+
+
+
+
+
+
+
+      
       {
         id: utilService.makeId(),
         type: "noteTodos", // for TODO

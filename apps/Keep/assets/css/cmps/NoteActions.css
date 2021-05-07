@@ -28,3 +28,7 @@
     content: "\f044";
 }
 
+.fa-at::after {
+    content: "\f1fa"
+}
+

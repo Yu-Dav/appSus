@@ -1,3 +1,7 @@
+.note-edit-bcg {
+    transition: .5s;
+}
+
 .note-edit-bcg span {
     display: inline-block;
     width: 20px;
