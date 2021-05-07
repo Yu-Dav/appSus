@@ -1,27 +1,37 @@
 /* seperate if more styles */
+
 .email-list {
-    width: 100%;
+    width: 80%;
 }
-
-
-
 
 .grid-container {
     display: grid;
-    grid-template-columns: 0.5fr 0.9fr 1.2fr 0.7fr 0.2fr;
+    grid-template-columns: 0.5fr 0.9fr 1.2fr 0.7fr 0.2fr 0.2fr;
     grid-template-rows: 1fr;
     gap: 5px 0px;
-    grid-template-areas:
-      "from subject body date star";
-  }
-  
-  .from { grid-area: from; }
-  
-  .star { grid-area: star; }
-  
-  .date { grid-area: date; }
-  
-  .body { grid-area: body; }
-  
-  .subject { grid-area: subject; }
-  
+    grid-template-areas: "from subject body date star trash";
+}
+
+.from {
+    grid-area: from;
+}
+
+.star {
+    grid-area: star;
+}
+
+.fa-trash {
+    grid-area: trash;
+}
+
+.date {
+    grid-area: date;
+}
+
+.body {
+    grid-area: body;
+}
+
+.subject {
+    grid-area: subject;
+}

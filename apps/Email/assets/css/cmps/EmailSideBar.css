@@ -2,6 +2,10 @@
     width: 500px;
 }
 
+.plus-sign{
+    width: 50px;
+}
+
 .compose-btn {
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
@@ -14,14 +18,26 @@
     display: inline-flex;
     font-weight: 500;
     height: 40px;
-    width: 115px;
     overflow: hidden;
-    padding: 0 24px 0 0;
+    padding: 0 24px 0 24px;
 }
+
+/* .compose-btn:hover{
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+    background-color: #fafafb;
+
+} */
 
 .btn {
     margin-bottom: 5px;
     background-color: #fff;
+    transition: .3s;
+}
+
+.btn:hover{
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+    background-color: #fafafb;
+
 }
 
 /* todo-find the inbox icon.. */
@@ -43,10 +59,6 @@
 .fa-star::before {
     content: "\f005";
     transition: .3s;
-}
-
-.fa-star:hover {
-    color: #fcca3d;;
 }
 
 .fa-star::after {
