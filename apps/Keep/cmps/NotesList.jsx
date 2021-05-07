@@ -4,8 +4,9 @@ import { NoteTodos } from './NoteTodos.jsx'
 import { NoteVid } from './NoteVid.jsx'
 
 export function NotesList({ notes, onDeleteNote, onPinNote,  onOpenClr, onChangeNoteClr, onOpenEditModal}) {
-
+// props -> ...props
     const DynamicCmp = (note) => {
+        
         switch (note.type) {
             case 'noteText':
                 return <NoteTxt key={note.id} note={note} onDeleteNote={onDeleteNote} 

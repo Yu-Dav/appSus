@@ -1,14 +1,43 @@
 header {
     padding: 1em 0;
+    font-size: 1.3em;
 }
 
-h2 img {
+.app-header h2 img {
     height: 80px;
 }
 
-h2 {
+.app-header h2 {
     font-family: alfa, sans-serif;
     color: #464c55;
     letter-spacing: 1px;
-    font-size: 1.3em;
+}
+
+.app-header li {
+    border-bottom: 1px solid transparent;
+}
+
+.app-header li:hover {
+    color: #8a8a8a;
+    border-bottom: 1px solid #8a8a8a;
+}
+
+.app-header li .active {
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid white;
+}
+
+.app-header ul {
+    flex-direction: column;
+}
+
+@media (min-width: 480px) {
+
+    .app-header ul>*:not(:last-child) {
+        margin-inline-end: 15px;
+    }
+
+    .app-header ul {
+        flex-direction: row;
+    }
 }

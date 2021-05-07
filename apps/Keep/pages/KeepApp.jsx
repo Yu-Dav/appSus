@@ -5,6 +5,8 @@ import { NotesAdd } from '../cmps/NotesAdd.jsx'
 import { NotesList } from '../cmps/NotesList.jsx'
 import { NoteEditContent } from '../cmps/NoteEditContent.jsx'
 
+import { eventBusService } from '../../../services/event-bus-service.js'
+
 
 export class KeepApp extends React.Component {
     state = {
@@ -19,7 +21,7 @@ export class KeepApp extends React.Component {
             setTimeout(() => this.setState({ notes }), 1000)
         })
     }
-    
+
     loadNotes() {
         keepService.query().then(notes => this.setState({ notes }), 1000)
 
@@ -47,6 +49,7 @@ export class KeepApp extends React.Component {
         keepService.deleteNote(noteId).then(res => this.loadNotes())
     }
     onAddNewNote = (ev, note) => {
+        eventBusService.emit('show-user-msg', {txt:'note added!',type:'success'})
         ev.preventDefault()
         if (!note.input) return
         keepService.addNewNote(note).then(res => this.loadNotes())
