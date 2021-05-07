@@ -22,15 +22,15 @@ export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEd
                 title="Delete" className="fa fa-trash-alt"></i>
             <Link to={`/email?body=${url}`}>
                 <i>share</i>
-            {/* /email/compose?subject=my note&body= note about the rain */}
 
             </Link>
 
-            {/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */}
 
         </div>
     )
 }
 
 
+{/* /email/compose?subject=my note&body= note about the rain */}
+{/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */}
 // className={this.state.clicked === 'noteImg' ? "clicked fas fa-image": "fas fa-image"}
