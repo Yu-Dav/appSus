@@ -1,7 +1,7 @@
 import { Loading } from '../../../cmps/Loading.jsx'
 import { EmailList } from '../cmps/EmailList.jsx'
 import { EmailFilter } from '../cmps/EmailFilter.jsx'
-import { EmailSearch } from '../cmps/EmailSearch.jsx' //todo
+import { EmailSearch } from '../cmps/EmailSearch.jsx' 
 import { EmailCompose } from '../cmps/EmailCompose.jsx'
 import { EmailSideBar } from '../cmps/EmailSideBar.jsx'
 import { emailService } from '../services/email-service.js'
@@ -13,24 +13,26 @@ export class EmailApp extends React.Component {
         emails: null,
         filterBy: null,
         isComposed: false,
+        txtReceived: null,
         view: 'inbox'
     }
 
     componentDidMount() {
         const searchParams = new URLSearchParams(this.props.location.search);
-        // const ctg = searchParams.get('ctg')
-        if (searchParams) this.onOpenModal
-        // ctg && this.onSetFilter({...this.state.filterBy, ctg})
+        const txtReceived = searchParams.get('body')
+        txtReceived && this.onOpenModal(txtReceived);
         this.loadEmails()
     }
-
-
 
     loadEmails = () => {
         emailService.query(this.state.filterBy).then(emails => this.setState({ emails }))
     }
 
-    onOpenModal = () => {
+    onOpenModal = (txt) => {
+        if (txt) {
+            this.setState({ ...this.state, isComposed: true, txtReceived: txt })
+            return
+        }
         this.setState({ isComposed: !this.state.isComposed })
     }
 
@@ -44,8 +46,7 @@ export class EmailApp extends React.Component {
         emailService.setIsRead(emailId).then(this.loadEmails)
     }
 
-    onSetStarEmail = ( emailId) => {
-     
+    onSetStarEmail = (emailId) => {
         emailService.setIsStarred(emailId).then(this.loadEmails)
     }
 
@@ -64,7 +65,6 @@ export class EmailApp extends React.Component {
         if (view === 'star') return emails.filter(email => email.isStarred)
         if (view === 'read') return emails.filter(email => email.isRead)
         if (view === 'unread') return emails.filter(email => !email.isRead)
-
     }
 
     onDeleteEmail = (emailId) => {
@@ -73,8 +73,7 @@ export class EmailApp extends React.Component {
     }
 
     render() {
-        const { emails } = this.state
-        const { isComposed } = this.state
+        const { emails, isComposed, txtReceived } = this.state
         if (!emails) return <Loading />
         return (
             <React.Fragment >
@@ -82,7 +81,7 @@ export class EmailApp extends React.Component {
                 <EmailFilter onSetView={this.onSetView} />
                 <section className="email-app flex">
                     {/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */}
-                   {isComposed && <EmailCompose onSendingEmail={this.onSendingEmail} />}
+                    {isComposed && <EmailCompose txt={txtReceived} onSendingEmail={this.onSendingEmail} />}
                     <EmailSideBar onSetView={this.onSetView} onOpenModal={this.onOpenModal} />
                     <Switch>
                         <Route path="/email" render={(props) => (
