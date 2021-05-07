@@ -17,8 +17,14 @@ export class EmailApp extends React.Component {
     }
 
     componentDidMount() {
+        const searchParams = new URLSearchParams(this.props.location.search);
+        // const ctg = searchParams.get('ctg')
+        if (searchParams) this.onOpenModal
+        // ctg && this.onSetFilter({...this.state.filterBy, ctg})
         this.loadEmails()
     }
+
+
 
     loadEmails = () => {
         emailService.query(this.state.filterBy).then(emails => this.setState({ emails }))
@@ -75,7 +81,8 @@ export class EmailApp extends React.Component {
                 <EmailSearch onSetView={this.onSetFilter} />
                 <EmailFilter onSetView={this.onSetView} />
                 <section className="email-app flex">
-                    {isComposed && <EmailCompose onSendingEmail={this.onSendingEmail} />}
+                    {/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */}
+                   {isComposed && <EmailCompose onSendingEmail={this.onSendingEmail} />}
                     <EmailSideBar onSetView={this.onSetView} onOpenModal={this.onOpenModal} />
                     <Switch>
                         <Route path="/email" render={(props) => (
