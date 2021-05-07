@@ -3,6 +3,9 @@ const { Link } = ReactRouterDOM
 
 export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEditModal }) {
     // console.log('note =', note)
+    let url = note.info.txt
+    if (note.type === 'noteVid') url = note.info.url
+    if (note.type === 'noteImg') url = note.info.url
     return (
         <div className="note-actions">
             {/* clr of a pinned note should be changed by class */}
@@ -17,7 +20,7 @@ export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEd
 
             <i onClick={() => onDeleteNote(note.id)}
                 title="Delete" className="fa fa-trash-alt"></i>
-            <Link to={`/email?body=${note.info.txt}`}>
+            <Link to={`/email?body=${url}`}>
                 <i>share</i>
             {/* /email/compose?subject=my note&body= note about the rain */}
 
