@@ -4,6 +4,12 @@ export class EmailCompose extends React.Component {
         body: '',
     }
 
+    componentDidMount() {
+        if (!this.props.txt) return
+        this.setState({ ...this.state, body: this.props.txt })
+    }
+
+
     handleChange = (ev) => {
         const field = ev.target.name
         const value = ev.target.value
@@ -15,7 +21,7 @@ export class EmailCompose extends React.Component {
         return (
             <div className="email-compose-container">
                 <form className="email-compose" onSubmit={(ev) => this.props.onSendingEmail(ev, this.state)}>
-                    
+
                     <label className="top-frm flex space-btw" htmlFor="subject">subject:<button className="btn close-modal-btn">x</button></label>
                     <input type="text" id="subject" name="subject" value={subject} onChange={this.handleChange} />
                     <hr />
