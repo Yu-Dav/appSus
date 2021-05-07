@@ -1,14 +1,18 @@
 .user-msg {
-    float: right;
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform: translate(-80%, -50%);
     background-color: honeydew;
     color: #333;
     padding: 10px;
 }
 
 .user-msg.error {
-    background-color: lightcoral;
+    background-color: rgba(240, 128, 128, 0.5);
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    background-color: rgb(52, 212, 52);
+    box-shadow: 1px 1px 3px rgba(54, 54, 54, 0.815);
 }

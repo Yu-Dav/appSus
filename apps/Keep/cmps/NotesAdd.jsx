@@ -38,12 +38,15 @@ export class NotesAdd extends React.Component {
             <section className="notes-add container ">
                 <div className="notes-add ">
 
-                    <form className="flex justify-center align-center space-btw" 
-                    onSubmit={() => this.props.onAddNewNote(event, this.state)}>
-                       
-                        <input type="text" name="input" placeholder={this.getPlaceholder()} 
-                         autoComplete="off" value={input} onChange={this.handleChange} onBlur={this.onInputBlur} />
-                       
+                    <form className="flex justify-center align-center space-btw"
+                        onSubmit={() => {
+                            this.props.onAddNewNote(event, this.state)
+                            this.setState({...this.state, input: ''})
+                        }}>
+
+                        <input type="text" name="input" placeholder={this.getPlaceholder()}
+                            autoComplete="off" value={input} onChange={this.handleChange} onBlur={this.onInputBlur} />
+
                         {/* <button className="btn">Save</button> */}
 
                         <NotesAddSelect handleChange={this.handleChange} />

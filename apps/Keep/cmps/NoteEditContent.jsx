@@ -16,7 +16,8 @@ export class NoteEditContent extends React.Component {
             <div className="edit-modal flex space-btw " >
                 editing content
                 <input type="text" name="input" id="" value={input} onChange={this.handleChange} />
-                <button className="btn" onClick={() => this.props.onSaveEditChange(input)}>Save</button>
+                <button className="btn btn-confirm" onClick={() => this.props.onSaveEditChange(input)}>Save</button>
+                <button className="btn btn-cancel" onClick={() => this.props.onOpenEditModal()}>Cancel</button>
             </div>
         )
     }

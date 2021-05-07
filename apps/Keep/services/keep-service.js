@@ -1,5 +1,7 @@
 import { utilService } from "../../../services/util-service.js";
 import { storageService } from "../../../services/storage-service.js";
+import { eventBusService } from '../../../services/event-bus-service.js'
+
 
 export const keepService = {
   query,
@@ -47,7 +49,9 @@ function onOpenClrCmp(id) {
 
 function pinNote(id) {
   const idx = gNotes.findIndex((note) => note.id === id);
+  const text = gNotes[idx].isPinned? 'unpinned' : 'pinned successfully'
   gNotes[idx].isPinned = !gNotes[idx].isPinned;
+  eventBusService.emit('show-user-msg', { txt: `You note was ${text}`, type: 'success' })
   _saveNotesToStorage();
   return Promise.resolve();
 }
@@ -60,6 +64,7 @@ function deleteNote(id) {
 }
 
 function addNewNote(note) {
+  console.log ('note =',note)
   const newNote = _createNewNote(note);
   gNotes.unshift(newNote);
   _saveNotesToStorage();

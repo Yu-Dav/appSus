@@ -9,6 +9,8 @@ import { eventBusService } from '../../../services/event-bus-service.js'
 
 
 export class KeepApp extends React.Component {
+    removeEvent;
+
     state = {
         notes: null,
         noteEdit: {
@@ -17,9 +19,24 @@ export class KeepApp extends React.Component {
         }
     }
     componentDidMount() {
-        keepService.query().then(notes => {
+        const searchParams = new URLSearchParams(this.props.location.search);
+        const txtReceived = searchParams.get('body')
+        if (txtReceived) {
+            keepService.addNewNote({ noteType: 'noteText', input: txtReceived }).then(res => {
+                keepService.query().then(notes => {
+                    setTimeout(() => this.setState({ notes }), 1000)
+                })
+            })
+        }
+        else keepService.query().then(notes => {
             setTimeout(() => this.setState({ notes }), 1000)
         })
+    }
+
+    componentWillUnmount() {
+        console.log('goodbye keep')
+        // this.removeEvent()
+
     }
 
     loadNotes() {
@@ -27,6 +44,7 @@ export class KeepApp extends React.Component {
 
     }
     onOpenEditModal = (noteId) => {
+        if (this.state.noteEdit.isEditing) return this.setState({ ...this.state, noteEdit: { isEditing: false, editNoteId: null } })
         this.setState({ ...this.state, noteEdit: { isEditing: true, editNoteId: noteId } })
     }
     onSaveEditChange = (input) => {
@@ -46,22 +64,25 @@ export class KeepApp extends React.Component {
         keepService.changeNoteClr(noteId, clr).then(res => this.loadNotes())
     }
     onDeleteNote = (noteId) => {
+        eventBusService.emit('show-user-msg', { txt: 'Note was removed', type: 'success' })
+
         keepService.deleteNote(noteId).then(res => this.loadNotes())
     }
     onAddNewNote = (ev, note) => {
-        eventBusService.emit('show-user-msg', {txt:'note added!',type:'success'})
         ev.preventDefault()
         if (!note.input) return
+        eventBusService.emit('show-user-msg', { txt: 'New note added!', type: 'success' })
         keepService.addNewNote(note).then(res => this.loadNotes())
     }
     render() {
-        const notes = this.state.notes
+        const {notes} = this.state
+        const {isEditing} = this.state.noteEdit
         if (!notes) return <Loading />;
         return (
             <section className="notes-app">
                 <NotesAdd onAddNewNote={this.onAddNewNote} />
 
-                {this.state.noteEdit.isEditing && <NoteEditContent onSaveEditChange={this.onSaveEditChange} />}
+                {isEditing && <NoteEditContent onSaveEditChange={this.onSaveEditChange} onOpenEditModal={this.onOpenEditModal} />}
 
 
                 <NotesList notes={notes.filter(note => note.isPinned)} onDeleteNote={this.onDeleteNote}

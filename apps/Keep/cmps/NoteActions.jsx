@@ -1,3 +1,5 @@
+import { eventBusService } from '../../../services/event-bus-service.js'
+
 const { Link } = ReactRouterDOM
 
 
@@ -21,8 +23,8 @@ export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEd
             <i onClick={() => onDeleteNote(note.id)}
                 title="Delete" className="fa fa-trash-alt"></i>
             <Link to={`/email?body=${url}`}>
-                <i>share</i>
-
+                <i onClick={()=>{eventBusService.emit('show-user-msg', { txt: 'Sending note via email', type: 'success' })}}>share</i>
+                {/* <i >share</i> */}
             </Link>
 
 
@@ -31,6 +33,7 @@ export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEd
 }
 
 
-{/* /email/compose?subject=my note&body= note about the rain */}
-{/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */}
+
+{/* /email/compose?subject=my note&body= note about the rain */ }
+{/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */ }
 // className={this.state.clicked === 'noteImg' ? "clicked fas fa-image": "fas fa-image"}
