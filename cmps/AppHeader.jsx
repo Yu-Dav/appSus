@@ -1,6 +1,6 @@
 // import React from 'react'
 const { NavLink, withRouter } = ReactRouterDOM
-
+import { UserMsg } from './UserMsg.jsx'
 
 
 
@@ -17,6 +17,7 @@ export class AppHeader extends React.Component {
                         <img src="assets/img/logo.png" alt="logo" />
                         <h2 className="title">.appSus </h2>
                     </div>
+                    <UserMsg />
                     <ul className="clean-list flex">
                         {/* <li><NavLink exact to="/" activeClassName="active-nav">Home</NavLink></li> */}
                         <li><NavLink exact to="/" >Home</NavLink></li>

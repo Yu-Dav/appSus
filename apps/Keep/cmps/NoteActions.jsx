@@ -1,3 +1,5 @@
+const { Link } = ReactRouterDOM
+
 
 export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEditModal }) {
     // console.log('note =', note)
@@ -15,6 +17,13 @@ export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEd
 
             <i onClick={() => onDeleteNote(note.id)}
                 title="Delete" className="fa fa-trash-alt"></i>
+            <Link to={`/email?body=${note.info.txt}`}>
+                <i>share</i>
+            {/* /email/compose?subject=my note&body= note about the rain */}
+
+            </Link>
+
+            {/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */}
 
         </div>
     )
