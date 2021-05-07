@@ -2,7 +2,7 @@ import { NoteActions } from './NoteActions.jsx'
 import { NoteBcgClr } from './NoteBcgClr.jsx'
 
 export function NoteTxt({ note, onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr, onOpenEditModal}) {
-    // console.log ('var =',note)
+    // console.log ('props =',props)
     return (
         <div style={{backgroundColor: note.style.backgroundColor}} className="note-preview">
             <p>

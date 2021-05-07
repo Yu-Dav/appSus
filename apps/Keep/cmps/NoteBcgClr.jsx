@@ -1,12 +1,12 @@
 // import React from 'react'
 
 export function NoteBcgClr({ onChangeNoteClr, noteId }) {
-    const clr1 = '#ff0000'
-    const clr2 = '#0000ff'
-    const clr3 = '#ffff00'
+    const clr1 = '#e17474'
+    const clr2 = '#b4b4da'
+    const clr3 = '#dcdc6f'
     const clr4 = '#ffa500'
     const clr5 = '#ffc0cb'
-    const clr6 = '#008000'
+    const clr6 = '#84c484'
     // console.log('De colors =', clr1, clr2, clr3, clr4, clr5, clr6)
     return (
         <div className="note-edit-bcg">

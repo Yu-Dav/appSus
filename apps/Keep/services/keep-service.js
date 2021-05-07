@@ -187,7 +187,7 @@ function _createNotes() {
         isPinned: false,
         isStyleEditing: false,
         info: {
-          url: "https://www.youtube.com/embed?v=V08j6xzaDrI",
+          url: "V08j6xzaDrI",
         },
         style: {
           backgroundColor: "#b8c4ad",

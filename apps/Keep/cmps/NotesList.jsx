@@ -6,6 +6,7 @@ import { NoteVid } from './NoteVid.jsx'
 export function NotesList({ notes, onDeleteNote, onPinNote,  onOpenClr, onChangeNoteClr, onOpenEditModal}) {
 
     const DynamicCmp = (note) => {
+        
         switch (note.type) {
             case 'noteText':
                 return <NoteTxt key={note.id} note={note} onDeleteNote={onDeleteNote} 
