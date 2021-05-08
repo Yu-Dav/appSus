@@ -8,12 +8,12 @@ export class Home extends React.Component {
                 <div className="hero">Welcome to your new favorite app</div>
                 <Link to="/keep">
                     <div className="keep">
-                        <img src="../assets/img/home-keep.jpg" alt="" />
+                        <img src="assets/img/home-keep.jpg" alt="" />
                     </div>
                 </Link>
                 <Link to="/email">
                     <div className="mail">
-                        <img src="../assets/img/home-email.jpg" alt="" />
+                        <img src="assets/img/home-email.jpg" alt="" />
                     </div>
                 </Link>
             </section>
