@@ -96,7 +96,7 @@ export class KeepApp extends React.Component {
                     onPinNote={this.onPinNote} onOpenClr={this.onOpenClr} onChangeNoteClr={this.onChangeNoteClr}
                     onOpenEditModal={this.onOpenEditModal} />
 
-
+            {/* add completed notes */}
             </section>
         )
     }

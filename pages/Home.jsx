@@ -7,12 +7,16 @@ export class Home extends React.Component {
             <section className="home-page container">
                 <div className="hero">Welcome to your app</div>
 
-                <Link to="/email">
-                    <div className="mail">link to mail</div>
-                </Link>
 
                 <Link to="/keep">
-                <div className="keep">link to keep</div>
+                    <div className="keep">
+                <img src="../assets/img/home-keep.jpg" alt="" />
+                    </div>
+                </Link>
+                <Link to="/email">
+                    <div className="mail">
+                <img src="../assets/img/home-email.jpg" alt="" />
+                    </div>
                 </Link>
             </section>
         )

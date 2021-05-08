@@ -2,8 +2,16 @@
 
 .email-list {
     width: 80%;
-    border: 2px solid #2a8f7a6e
+    /* border: 2px solid #2a8f7a6e */
 }
+
+.email-list>a>* {
+    border-bottom: 1px solid black;
+}
+/* 
+.email-list>a>*:last-of-type{
+    border-bottom: none;
+} */
 
 /* .email-list>*:not(:last-child) {
     border-bottom: 2px solid #2a8f7a6e;

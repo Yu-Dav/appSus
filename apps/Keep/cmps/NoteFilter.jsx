@@ -19,6 +19,7 @@ export class NoteFilter extends React.Component {
                 <select name="filterBy" id="filterBy" onChange={this.handleChange}>
                     <option value="">All</option>
                     <option value="pinned">Pinned</option>
+                    <option value="not-pinned">Not pinned</option>
                     <option value="noteText">Text</option>
                     <option value="noteImg">Images</option>
                     <option value="noteVid">Videos</option>

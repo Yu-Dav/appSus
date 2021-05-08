@@ -2,30 +2,31 @@
     text-align: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: .5fr 1fr;
     gap: 5px 5px;
     grid-template-areas:
         "hero hero"
         "mail keep";
 }
 
+.home-page img {
+    width: 100%;
+    object-fit: contain;
+}
+
 .hero {
     grid-area: hero;
-    height: 200px;
-    background-color: #fff;
-    padding: 5em;
+    padding: 4rem;
+    font-size: 2em;
+    color: #18777ec9;
 }
 
 .mail {
     grid-area: mail;
-    height: 200px;
-    background-color: #fff;
 
 }
 
 .keep {
     grid-area: keep;
-    height: 200px;
-    background-color: #fff;
 
 }
