@@ -6,7 +6,6 @@ export class Home extends React.Component {
         return (
             <section className="home-page container">
                 <div className="hero">Welcome to your new favorite app</div>
-
                 <Link to="/keep">
                     <div className="keep">
                         <img src="../assets/img/home-keep.jpg" alt="" />
