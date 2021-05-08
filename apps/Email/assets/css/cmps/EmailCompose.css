@@ -21,3 +21,10 @@ textarea {
     resize: none;
     height: 250px;
 }
+
+@media (max-width: 560px) {
+    .email-compose{
+        width: 80vw;
+    }
+
+}
