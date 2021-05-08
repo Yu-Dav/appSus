@@ -10,7 +10,6 @@ import { eventBusService } from '../../../services/event-bus-service.js'
 
 
 export class KeepApp extends React.Component {
-    // removeEvent;
 
     state = {
         filterBy: null,
@@ -46,7 +45,6 @@ export class KeepApp extends React.Component {
         keepService.onEditNote(input, id).then(res => {
             eventBusService.emit('show-user-msg', { txt: 'Note was changed', type: 'success' })
             this.onOpenEditModal(id)
-            // this.setState({ ...this.state, noteEdit: { isEditing: false, editNoteId: null } })
             this.loadNotes()
         })
     }
@@ -55,6 +53,9 @@ export class KeepApp extends React.Component {
     }
     onOpenClr = (noteId) => {
         keepService.onOpenClrCmp(noteId).then(res => this.loadNotes())
+    }
+    onCloseClr = () => {
+        keepService.onCloseClrCmp().then(res => this.loadNotes())
     }
     onChangeNoteClr = (noteId, clr) => {
         keepService.changeNoteClr(noteId, clr).then(res => this.loadNotes())
@@ -70,7 +71,7 @@ export class KeepApp extends React.Component {
         keepService.addNewNote(note).then(res => this.loadNotes())
     }
     onSetFilter = (val) => {
-        this.setState({ ...this.state, filterBy: val },this.loadNotes)
+        this.setState({ ...this.state, filterBy: val }, this.loadNotes)
     }
     render() {
         const { notes } = this.state
@@ -81,22 +82,22 @@ export class KeepApp extends React.Component {
 
                 <NotesAdd onAddNewNote={this.onAddNewNote} />
 
-                <NoteFilter onSetFilter={this.onSetFilter}/>
+                <NoteFilter onSetFilter={this.onSetFilter} />
 
                 {isEditing && <NoteEditContent onSaveEditChange={this.onSaveEditChange} onOpenEditModal={this.onOpenEditModal}
-                noteId={this.state.noteEdit.editNoteId} onDeleteNote={this.onDeleteNote} onPinNote={this.onPinNote} 
-                onOpenClr={this.onOpenClr} onOpenEditModal={this.onOpenEditModal}
+                    noteId={this.state.noteEdit.editNoteId} onDeleteNote={this.onDeleteNote} onPinNote={this.onPinNote}
+                    onOpenClr={this.onOpenClr} onOpenEditModal={this.onOpenEditModal}
                 />}
 
                 <NotesList notes={notes.filter(note => note.isPinned)} onDeleteNote={this.onDeleteNote}
                     onPinNote={this.onPinNote} onOpenClr={this.onOpenClr} onChangeNoteClr={this.onChangeNoteClr}
-                    onOpenEditModal={this.onOpenEditModal} />
+                    onOpenEditModal={this.onOpenEditModal} onCloseClr={this.onCloseClr} />
 
                 <NotesList notes={notes.filter(note => !note.isPinned)} onDeleteNote={this.onDeleteNote}
                     onPinNote={this.onPinNote} onOpenClr={this.onOpenClr} onChangeNoteClr={this.onChangeNoteClr}
-                    onOpenEditModal={this.onOpenEditModal} />
+                    onOpenEditModal={this.onOpenEditModal} onCloseClr={this.onCloseClr} />
 
-            {/* add completed notes */}
+                {/* add completed notes */}
             </section>
         )
     }

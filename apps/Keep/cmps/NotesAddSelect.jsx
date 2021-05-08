@@ -1,9 +1,3 @@
-// import React, { Component } from 'react'
-
-{/* // make these options into radio btns, then  */ }
-{/* // move into the form, on submit gets the value.  */ }
-
-{/* // class cmp with radio btns, gettign a func onHandleChange in its props */ }
 
 export class NotesAddSelect extends React.Component {
     state = {

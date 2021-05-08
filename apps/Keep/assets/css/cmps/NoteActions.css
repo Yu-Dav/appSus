@@ -1,19 +1,18 @@
 .note-actions {
     font-size: .75em;
-    margin-top: 15px;
+	margin-top: auto;
 }
 
 .note-actions i {
 font-size: 1.2em;
 }
 .pinned.fas.fa-thumbtack {
-    color: rgb(151, 151, 151);
+    color: #e7e7e7;
 }
 
 .note-actions > *:not(:last-child) {
     margin-inline-end: 10px;
 }
-
 
 .fa-thumbtack::after {
     content: "\f08d";

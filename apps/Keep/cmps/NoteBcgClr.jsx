@@ -1,4 +1,3 @@
-// import React from 'react'
 
 export function NoteBcgClr({ onChangeNoteClr, noteId }) {
     const clr1 = '#e17474'
@@ -8,7 +7,6 @@ export function NoteBcgClr({ onChangeNoteClr, noteId }) {
     const clr5 = '#ffc0cb'
     const clr6 = '#84c484'
     // const clr7 = '#b8c4ad'
-    // console.log('De colors =', clr1, clr2, clr3, clr4, clr5, clr6)
     return (
         <div className="note-edit-bcg">
             {/* <span style={{ backgroundColor: clr7 }} onClick={() => onChangeNoteClr(noteId, clr7)}></span> */}

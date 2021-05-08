@@ -18,11 +18,10 @@ export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEd
 
             {/* Open color pallete */}
 
-            <i onClick={() => onOpenClr(note.id)}
+            <i onMouseEnter={() => onOpenClr(note.id)} 
                 title="Change background color" className="fas fa-palette"></i>
 
             {/* Edit */}
-            {/* <i onClick={() => onOpenEditModal(note)} */}
             <i onClick={() => onOpenEditModal(note.id)}
                 title="Edit" className="fas fa-edit"></i>
 
@@ -39,7 +38,3 @@ export function NoteActions({ note, onDeleteNote, onPinNote, onOpenClr, onOpenEd
         </div>
     )
 }
-
-{/* /email/compose?subject=my note&body= note about the rain */ }
-{/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */ }
-// className={this.state.clicked === 'noteImg' ? "clicked fas fa-image": "fas fa-image"}
