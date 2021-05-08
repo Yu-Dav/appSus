@@ -32,6 +32,7 @@ function query(filterBy) {
 
 function onEditNote(txt, id) {
   // need to handle different types of notes.
+  
   const idx = gNotes.findIndex((note) => note.id === id);
   gNotes[idx].info.txt = txt;
   _saveNotesToStorage();
@@ -207,15 +208,6 @@ function _createNotes() {
           backgroundColor: "#b8c4ad",
         },
       },
-
-
-
-
-
-
-
-
-
       
       {
         id: utilService.makeId(),

@@ -10,6 +10,7 @@ a:hover {
 body {
 	background-color: #f1f0e8;
 	font-family: sans-pro, sans-serif;
+	color: rgb(75, 75, 75);
 }
 
 #root {

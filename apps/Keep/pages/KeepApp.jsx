@@ -10,7 +10,7 @@ import { eventBusService } from '../../../services/event-bus-service.js'
 
 
 export class KeepApp extends React.Component {
-    removeEvent;
+    // removeEvent;
 
     state = {
         filterBy: null,
@@ -45,7 +45,8 @@ export class KeepApp extends React.Component {
         const id = this.state.noteEdit.editNoteId
         keepService.onEditNote(input, id).then(res => {
             eventBusService.emit('show-user-msg', { txt: 'Note was changed', type: 'success' })
-            this.setState({ ...this.state, noteEdit: { isEditing: false, editNoteId: null } })
+            this.onOpenEditModal(id)
+            // this.setState({ ...this.state, noteEdit: { isEditing: false, editNoteId: null } })
             this.loadNotes()
         })
     }
@@ -74,7 +75,7 @@ export class KeepApp extends React.Component {
     render() {
         const { notes } = this.state
         const { isEditing } = this.state.noteEdit
-        if (!notes) return <Loading />;
+        if (!notes) return <Loading />
         return (
             <section className="notes-app">
 
@@ -82,7 +83,10 @@ export class KeepApp extends React.Component {
 
                 <NoteFilter onSetFilter={this.onSetFilter}/>
 
-                {isEditing && <NoteEditContent onSaveEditChange={this.onSaveEditChange} onOpenEditModal={this.onOpenEditModal} />}
+                {isEditing && <NoteEditContent onSaveEditChange={this.onSaveEditChange} onOpenEditModal={this.onOpenEditModal}
+                noteId={this.state.noteEdit.editNoteId} onDeleteNote={this.onDeleteNote} onPinNote={this.onPinNote} 
+                onOpenClr={this.onOpenClr} onOpenEditModal={this.onOpenEditModal}
+                />}
 
                 <NotesList notes={notes.filter(note => note.isPinned)} onDeleteNote={this.onDeleteNote}
                     onPinNote={this.onPinNote} onOpenClr={this.onOpenClr} onChangeNoteClr={this.onChangeNoteClr}

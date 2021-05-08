@@ -3,7 +3,7 @@
 }
 
 .notes-add {
-    padding: 1em 0;
+    padding-top: 2em 
     /* background-color: #fff; */
 }
 
@@ -17,12 +17,17 @@
     border-color: transparent;
     outline: none;
     height: fit-content;
-    max-width: 80vw;
-    font-size: 1.2em
+    width: 100%;
+    font-size: 1.2em;
+    border-radius: 7px;
 }
 
 @media (max-width: 600px) {
     .notes-add form {
         flex-direction: column;
+    }
+
+    .notes-add-btns {
+        margin-top: 1em;
     }
 }

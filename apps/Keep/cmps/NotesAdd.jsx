@@ -36,7 +36,7 @@ export class NotesAdd extends React.Component {
         const { noteType, input } = this.state
         return (
             <section className="notes-add container ">
-                <div className="notes-add ">
+                {/* <div className="notes-add "> */}
 
                     <form className="flex justify-center align-center space-btw"
                         onSubmit={() => {
@@ -52,7 +52,7 @@ export class NotesAdd extends React.Component {
                         <NotesAddSelect handleChange={this.handleChange} />
                     </form>
 
-                </div>
+                {/* </div> */}
             </section>
         )
     }
