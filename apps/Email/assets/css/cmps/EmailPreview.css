@@ -1,9 +1,13 @@
 .email-preview {
-    border: 2px solid green;
+    border-bottom: 2px solid #2a8f7a6e;
     padding: 10px 5px;
-    padding-left: 30px;
-    
+    padding-left: 30px; 
 }
+
+/* wrong selector */
+/* .email-preview:last-of-type{
+    border-bottom: none;
+} */
 
 a:hover {
     font-weight: normal;

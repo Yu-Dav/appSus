@@ -1,5 +1,5 @@
-.email-control {
-    width: 500px;
+.email-controls {
+    width:160px;
 }
 
 .plus-sign{
@@ -22,13 +22,8 @@
     padding: 0 24px 0 24px;
 }
 
-/* .compose-btn:hover{
-    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
-    background-color: #fafafb;
-
-} */
-
-.btn {
+.email-controls .btn {
+    padding: 10px 0;
     margin-bottom: 5px;
     background-color: #fff;
     transition: .3s;
@@ -40,27 +35,21 @@
 
 }
 
-/* todo-find the inbox icon.. */
+/* change names for icons */
+.fa:before {
+    margin-right: 10px;
+}
 
-.fa-inbox::before {
+.fa-inbox-side::before {
+    
     content: "\f01c";
 }
 
-.fa-trash::before {
+.fa-trash-side::before {
     content: "\f2ed";
 }
 
-/* overwritten from details? */
-
-.fa-trash::after {
-    content: " ";
-}
-
-.fa-star::before {
+.fa-star-side::before {
     content: "\f005";
     transition: .3s;
-}
-
-.fa-star::after {
-    content: " "
 }
