@@ -6,10 +6,16 @@ import { UserMsg } from './UserMsg.jsx'
 
 export class AppHeader extends React.Component {
     state = {
+        isMenuOpen: false
+    }
 
+    toggleMenu=()=>{
+        console.log('opening/closing');
+        this.setState({isMenuOpen:!this.state.isMenuOpen})
     }
 
     render() {
+        const {isMenuOpen} = this.state;
         return (
             <header>
                 <nav className="app-header container flex space-btw align-center">
@@ -18,8 +24,8 @@ export class AppHeader extends React.Component {
                         <h2 className="title">.appSus </h2>
                     </div>
                     <UserMsg />
-                    <ul className="clean-list flex">
-                        {/* <li><NavLink exact to="/" activeClassName="active-nav">Home</NavLink></li> */}
+                    <button className="btn-menu" onClick={this.toggleMenu}>☰</button>
+                    <ul className ={isMenuOpen ? "clean-list flex hamburg" : "clean-list flex"}>
                         <li><NavLink exact to="/" >Home</NavLink></li>
                         <li><NavLink to="/about">About</NavLink> </li>
                         <li><NavLink to="/email">Mail</NavLink> </li>

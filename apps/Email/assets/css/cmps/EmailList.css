@@ -5,7 +5,7 @@
     border: 2px solid #2a8f7a6e
 }
 
-/* .email-list>*:not(:last-child) {
+/* .email-list>a>div:last-of-type {
     border-bottom: 2px solid #2a8f7a6e;
 } */
 

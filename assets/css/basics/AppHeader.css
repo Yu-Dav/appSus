@@ -1,0 +1,76 @@
+header {
+    padding: 1em 0;
+    font-size: 1.3em;
+}
+
+.btn-menu {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.app-header .hamburg li {
+    margin-bottom: 10px;
+    line-height: 2;
+}
+
+.app-header h2 img {
+    height: 80px;
+}
+
+.app-header h2 {
+    font-family: alfa, sans-serif;
+    color: #464c55;
+    letter-spacing: 1px;
+}
+
+.app-header li {
+    border-bottom: 1px solid transparent;
+}
+
+.app-header li .active {
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid white;
+}
+
+.app-header ul {
+    flex-direction: column;
+}
+
+@media (min-width:560px) {
+    .app-header .hamburg {
+        background-color: transparent;
+    }
+    .app-header li:hover {
+        color: #8a8a8a;
+        border-bottom: 1px solid #8a8a8a;
+    }
+    .btn-menu {
+        display: none;
+    }
+    .app-header ul>*:not(:last-child) {
+        margin-inline-end: 15px;
+    }
+    .app-header ul {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 560px) {
+    .app-header ul {
+        display: none;
+    }
+    .app-header .hamburg {
+        box-shadow: 0 0 3px 3px #8a7676b8;
+        background-color: rgb(243 76 109 / 98%);
+        width: 35vw;
+        display: flex;
+        position: absolute;
+        top: 108px;
+        right: 50px;
+        padding: 1em 1em;
+    }
+}
