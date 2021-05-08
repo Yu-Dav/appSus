@@ -1,0 +1,55 @@
+.email-controls {
+    width:160px;
+}
+
+.plus-sign{
+    width: 50px;
+}
+
+.compose-btn {
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    font-size: .875rem;
+    letter-spacing: .25px;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 24px;
+    color: #3c4043;
+    display: inline-flex;
+    font-weight: 500;
+    height: 40px;
+    overflow: hidden;
+    padding: 0 24px 0 24px;
+}
+
+.email-controls .btn {
+    padding: 10px 0;
+    margin-bottom: 5px;
+    background-color: #fff;
+    transition: .3s;
+}
+
+.btn:hover{
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+    background-color: #fafafb;
+
+}
+
+/* change names for icons */
+.fa:before {
+    margin-right: 10px;
+}
+
+.fa-inbox-side::before {
+    
+    content: "\f01c";
+}
+
+.fa-trash-side::before {
+    content: "\f2ed";
+}
+
+.fa-star-side::before {
+    content: "\f005";
+    transition: .3s;
+}

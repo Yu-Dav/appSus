@@ -17,6 +17,11 @@ export function EmailPreview({ email, onSetReadEmail, onSetStarEmail, onDeleteEm
                         onSetStarEmail(email.id)
                     }
                     } className={email.isStarred ? "fas fa fa-star star yellow" : "fa fa-star star"} ></span>
+                    <i className="fa fa-trash" onClick={(ev) => {
+                        ev.stopPropagation()
+                        onDeleteEmail(email.id)
+                    }}>
+                    </i>
                 </div>
             </NavLink>
             <Switch>

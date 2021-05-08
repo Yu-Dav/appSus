@@ -6,5 +6,6 @@
 
 @import './cmps/EmailList.css';
 @import './cmps/EmailPreview.css';
+@import './cmps/EmailDetails.css';
 @import './cmps/EmailCompose.css';
 @import './cmps/EmailSideBar.css';

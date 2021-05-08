@@ -1,10 +1,13 @@
-.email-preview{
-    border: 2px solid green;
+.email-preview {
+    border-bottom: 2px solid #2a8f7a6e;
+    padding: 10px 5px;
+    padding-left: 30px; 
 }
 
-.email-preview span {
-    margin-inline-end: 10px;
-}
+/* wrong selector */
+/* .email-preview:last-of-type{
+    border-bottom: none;
+} */
 
 a:hover {
     font-weight: normal;
@@ -21,5 +24,3 @@ a:hover {
 .fa-star.yellow {
     color: #fcca3d;
 }
-
-
