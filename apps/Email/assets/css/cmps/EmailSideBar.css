@@ -34,6 +34,16 @@
     background-color: #fafafb;
 }
 
+/* change names for icons */
+
+.fa {
+    font-family: icons;
+}
+
+.fas {
+    font-family: icons-solid;
+}
+
 .fa:before {
     margin-right: 10px;
 }

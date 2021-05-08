@@ -1,13 +1,54 @@
+.modal-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #9f9f9f8a;
+}
+
 .edit-modal {
     width: 60vw;
-    height: 30vh;
+    height: 40vh;
     padding: 2em;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: rgb(213, 223, 223);
     flex-direction: column;
-    box-shadow: 1px 1px 2px 3px #0000003b;
     z-index: 1;
+    background-color: #f1f0e8f0;
+    border: inset 40px solid #f1f0e8;
+    box-shadow: 0 0 11px 1px rgb(146 145 145 / 84%);
+}
+
+.edit-modal>*:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.edit-modal .btn-container>*:not(:last-child) {
+    margin-right: 15px;
+}
+
+.edit-modal h1 {
+    font-size: 1.4em;
+}
+
+.edit-modal .input-container {
+    width: 100%;
+}
+
+.edit-modal input {
+    padding: .2em .5em;
+    line-height: 1.5;
+    border: none;
+    border-radius: 7px;
+    width: 60%;
+    margin-top: 15px;
+}
+
+.edit-modal .btn-confirm {
+    font-size: 1.2em;
+}
+
+.edit-modal .btn-cancel {
+    font-size: .8em;
 }

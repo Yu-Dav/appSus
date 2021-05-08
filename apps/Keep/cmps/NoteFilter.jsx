@@ -13,15 +13,17 @@ export class NoteFilter extends React.Component {
 
     render() {
         return (
-            <div className="notes-filter container">
+            <div className="notes-filter container flex justify-center">
                 <label htmlFor="filterBy">Filter notes by:</label>
 
                 <select name="filterBy" id="filterBy" onChange={this.handleChange}>
                     <option value="">All</option>
                     <option value="pinned">Pinned</option>
+                    <option value="not-pinned">Not pinned</option>
                     <option value="noteText">Text</option>
                     <option value="noteImg">Images</option>
                     <option value="noteVid">Videos</option>
+                    <option value="noteAud">Audios</option>
                     <option value="noteTodos">Todo's</option>
                 </select>
 

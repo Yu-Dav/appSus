@@ -3,8 +3,11 @@
     margin-top: 15px;
 }
 
+.note-actions i {
+font-size: 1.2em;
+}
 .pinned.fas.fa-thumbtack {
-    color: rgb(255, 255, 255);
+    color: rgb(151, 151, 151);
 }
 
 .note-actions > *:not(:last-child) {

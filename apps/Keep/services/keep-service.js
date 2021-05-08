@@ -24,6 +24,8 @@ function query(filterBy) {
   if (filterBy) {
     if (filterBy === "pinned")
       return Promise.resolve(notes.filter((note) => note.isPinned));
+      if (filterBy === "not-pinned")
+      return Promise.resolve(notes.filter((note) => !note.isPinned));
     return Promise.resolve(notes.filter((note) => note.type === filterBy));
   }
   // console.log("notes =", notes);
@@ -32,6 +34,7 @@ function query(filterBy) {
 
 function onEditNote(txt, id) {
   // need to handle different types of notes.
+  
   const idx = gNotes.findIndex((note) => note.id === id);
   gNotes[idx].info.txt = txt;
   _saveNotesToStorage();
@@ -146,7 +149,7 @@ function _createNotes() {
           txt: "Fullstack Me Baby!",
         },
         style: {
-          backgroundColor: "#b8c4ad",
+          backgroundColor: "#e17474",
         },
       },
 
@@ -159,7 +162,7 @@ function _createNotes() {
           txt: "Another note",
         },
         style: {
-          backgroundColor: "#b8c4ad",
+          backgroundColor: "#84c484",
         },
       },
 
@@ -174,7 +177,7 @@ function _createNotes() {
           title: "Me playing Mi",
         },
         style: {
-          backgroundColor: "#b8c4ad",
+          backgroundColor: "#ffc0cb",
         },
       },
 
@@ -189,7 +192,7 @@ function _createNotes() {
           // title: "Me playing Mi",
         },
         style: {
-          backgroundColor: "#b8c4ad",
+          backgroundColor: "#ffa500",
         },
       },
 
@@ -204,18 +207,9 @@ function _createNotes() {
           // title: "Me playing Mi",
         },
         style: {
-          backgroundColor: "#b8c4ad",
+          backgroundColor: "#b4b4da",
         },
       },
-
-
-
-
-
-
-
-
-
       
       {
         id: utilService.makeId(),
@@ -230,7 +224,7 @@ function _createNotes() {
           ],
         },
         style: {
-          backgroundColor: "#b8c4ad",
+          backgroundColor: "#b4b4da",
         },
       },
 
@@ -243,7 +237,7 @@ function _createNotes() {
           url: "V08j6xzaDrI",
         },
         style: {
-          backgroundColor: "#b8c4ad",
+          backgroundColor: "#ffa500",
         },
       },
     ];

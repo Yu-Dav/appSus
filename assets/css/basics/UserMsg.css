@@ -1,11 +1,21 @@
 .user-msg {
+    font-size: 1.1em;
     position: fixed;
-    left: 50%;
+    left: 53%;
     top: 20%;
     transform: translate(-80%, -50%);
     background-color: honeydew;
-    color: #333;
-    padding: 10px;
+    color: rgb(90, 90, 90);
+    font-weight: bold;
+    padding: 1em 1.25em;
+}
+
+.user-msg button {
+    font-size: 0.7em;
+}
+
+.user-msg>*:not(:last-child) {
+    margin-inline-end: 10px;
 }
 
 .user-msg.error {
@@ -13,6 +23,6 @@
 }
 
 .user-msg.success {
-    background-color: rgb(52, 212, 52);
-    box-shadow: 1px 1px 3px rgba(54, 54, 54, 0.815);
+    background-color: #85b685e5;
+    box-shadow: 0 0 11px 1px rgb(146 145 145 / 84%)
 }

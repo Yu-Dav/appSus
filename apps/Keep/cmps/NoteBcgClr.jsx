@@ -7,9 +7,11 @@ export function NoteBcgClr({ onChangeNoteClr, noteId }) {
     const clr4 = '#ffa500'
     const clr5 = '#ffc0cb'
     const clr6 = '#84c484'
+    // const clr7 = '#b8c4ad'
     // console.log('De colors =', clr1, clr2, clr3, clr4, clr5, clr6)
     return (
         <div className="note-edit-bcg">
+            {/* <span style={{ backgroundColor: clr7 }} onClick={() => onChangeNoteClr(noteId, clr7)}></span> */}
             <span style={{ backgroundColor: clr1 }} onClick={() => onChangeNoteClr(noteId, clr1)}></span>
             <span style={{ backgroundColor: clr2 }} onClick={() => onChangeNoteClr(noteId, clr2)}></span>
             <span style={{ backgroundColor: clr3 }} onClick={() => onChangeNoteClr(noteId, clr3)} ></span>

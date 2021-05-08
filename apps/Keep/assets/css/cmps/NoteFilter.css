@@ -1,0 +1,17 @@
+.notes-filter {
+    /* background-color: teal; */
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.2em;
+    padding: 1em 0em;
+}
+
+.notes-filter > *:not(:last-child) {
+    margin-inline-end: 10px;
+}
+
+.notes-filter select {
+    border: none;
+    width: 100px;
+    border-radius: 7px;
+}
