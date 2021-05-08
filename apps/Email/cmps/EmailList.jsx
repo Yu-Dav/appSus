@@ -5,7 +5,7 @@ export function EmailList({ emails, onSetReadEmail, onSetStarEmail, onDeleteEmai
     return (
         <div className="email-list container">
             {emails.map(email =>
-                <EmailPreview email={email} key={email.id} onSetReadEmail={onSetReadEmail} onDeleteEmail={onDeleteEmail} onSetStarEmail={onSetStarEmail}/>)}
+                <EmailPreview email={email} key={email.id} onSetReadEmail={onSetReadEmail} onDeleteEmail={onDeleteEmail} onSetStarEmail={onSetStarEmail} />)}
         </div>
     )
 }

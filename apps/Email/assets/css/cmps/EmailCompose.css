@@ -13,11 +13,11 @@
     padding: 10px
 }
 
-.email-compose input,textarea {
+.email-compose input, textarea {
     width: 100%;
 }
 
-textarea{
+textarea {
     resize: none;
     height: 250px;
 }

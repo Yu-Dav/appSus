@@ -1,22 +1,7 @@
 .email-preview {
-    /* border-bottom: 2px solid #2a8f7a6e; */
     padding: 10px 5px;
-    padding-left: 30px; 
+    padding-left: 30px;
 }
-
-
-/* div.email-preview:last-of-type{
-    border-bottom: none;
-} */
-
-/* div.email-preview:last-of-type { */
-    /* margin-bottom: 20px; */
-/* } */
-
-/* wrong selector */
-/* .email-preview:last-of-type{
-    border-bottom: none;
-} */
 
 a:hover {
     font-weight: normal;
@@ -28,6 +13,10 @@ a:hover {
 
 .fa-star::after {
     content: "\f005"
+}
+
+.fa-trash::after {
+    content: "\f2ed";
 }
 
 .fa-star.yellow {

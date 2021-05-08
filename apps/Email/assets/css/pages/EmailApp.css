@@ -2,17 +2,26 @@
     margin-left: 10px;
 }
 
-.detailed-body {
-    color: rgb(35, 33, 36);
-}
-
 .email-filter {
     border: none;
     border-radius: 7px;
+    padding: 0.5em 1em;
+    line-height: 1.5em;
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 0.9em;
 }
 
 .email-filter:focus-visible {
     outline-color: #1ab792;
 }
 
+i.fa-search::before {
+    content: "\f002";
+    margin-right: 0.2em;
+}
 
+.email-radio-btns {
+    padding: 10px;
+}

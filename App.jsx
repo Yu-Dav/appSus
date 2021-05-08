@@ -19,12 +19,10 @@ export function App() {
                     <Route component={EmailApp} path="/email" />
                     <Route component={AboutUs} path="/about" />
                     <Route component={Home} path="/" />
-                    {/* If we want to send props to a route: */}
-                    {/* <Route render={(props)=> <AboutUs {...props} name="popo"/>} path="/about" /> */}
                 </Switch>
             </main>
             <footer className="app-footer">
-                coffeerights &copy;
+                &copy; Yuval David &amp; Noga Jacobi 
             </footer>
         </Router>
     )

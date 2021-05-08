@@ -1,10 +1,7 @@
 import { eventBusService } from '../services/event-bus-service.js'
 
-
 export class UserMsg extends React.Component {
-
   removeEvent;
-
   state = {
     msg: null
   }
@@ -36,7 +33,6 @@ export class UserMsg extends React.Component {
         </p>
 
       </section>
-      //  this.state.msg
     )
   }
 }

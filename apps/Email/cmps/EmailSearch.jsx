@@ -15,9 +15,9 @@ export class EmailSearch extends React.Component {
     render() {
         const { txt } = this.state.filterBy
         return (
-            <form >
+            <form className="email-search flex justify-center" >
                 <label htmlFor="byTxt"></label>
-                <input placeholder="search mails" autoComplete="off" className="email-filter" type="text" id="byTxt" name="txt" onChange={this.handleChange} />
+                <i className="fa fas fa-search"><input placeholder="search mails" autoComplete="off" className="email-filter" type="text" id="byTxt" name="txt" onChange={this.handleChange} /></i>
             </form>
         )
     }

@@ -1,3 +1,16 @@
-.fa-trash::after {
-    content: "\f2ed";
+.save-as-note {
+    padding-top: 5px;
+    float: right;
+    color: #13734fcc;
+}
+
+.detailed-body {
+    height: 400px;
+    padding-top: 20px;
+    color: #417a7a;
+    white-space: pre-wrap;
+}
+
+.body-container .fa::before {
+    content: "\f0ca"
 }

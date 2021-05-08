@@ -1,21 +1,18 @@
-// import React from 'react'
-const { NavLink, withRouter } = ReactRouterDOM
+const { NavLink } = ReactRouterDOM
 import { UserMsg } from './UserMsg.jsx'
-
-
 
 export class AppHeader extends React.Component {
     state = {
         isMenuOpen: false
     }
 
-    toggleMenu=()=>{
+    toggleMenu = () => {
         console.log('opening/closing');
-        this.setState({isMenuOpen:!this.state.isMenuOpen})
+        this.setState({ isMenuOpen: !this.state.isMenuOpen })
     }
 
     render() {
-        const {isMenuOpen} = this.state;
+        const { isMenuOpen } = this.state;
         return (
             <header>
                 <nav className="app-header container flex space-btw align-center">
@@ -25,7 +22,7 @@ export class AppHeader extends React.Component {
                     </div>
                     <UserMsg />
                     <button className="btn-menu" onClick={this.toggleMenu}>☰</button>
-                    <ul className ={isMenuOpen ? "clean-list flex hamburg" : "clean-list flex"}>
+                    <ul className={isMenuOpen ? "clean-list flex hamburg" : "clean-list flex"}>
                         <li><NavLink exact to="/" >Home</NavLink></li>
                         <li><NavLink to="/about">About</NavLink> </li>
                         <li><NavLink to="/email">Mail</NavLink> </li>

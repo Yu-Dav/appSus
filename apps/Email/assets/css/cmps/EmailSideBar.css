@@ -1,9 +1,11 @@
 .email-controls {
-    width:160px;
+    width: 160px;
 }
 
-.plus-sign{
-    width: 50px;
+.plus-sign {
+    width: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .compose-btn {
@@ -29,12 +31,16 @@
     transition: .3s;
 }
 
-.btn:hover{
+.email-controls .fa {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.btn:hover {
     box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
     background-color: #fafafb;
 }
-
-/* change names for icons */
 
 .fa {
     font-family: icons;
@@ -48,7 +54,7 @@
     margin-right: 10px;
 }
 
-.fa-inbox-side::before {  
+.fa-inbox-side::before {
     content: "\f01c";
 }
 

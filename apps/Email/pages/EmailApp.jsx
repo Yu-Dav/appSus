@@ -1,7 +1,8 @@
+import {eventBusService} from '../../../services/event-bus-service'
 import { Loading } from '../../../cmps/Loading.jsx'
 import { EmailList } from '../cmps/EmailList.jsx'
 import { EmailFilter } from '../cmps/EmailFilter.jsx'
-import { EmailSearch } from '../cmps/EmailSearch.jsx' 
+import { EmailSearch } from '../cmps/EmailSearch.jsx'
 import { EmailCompose } from '../cmps/EmailCompose.jsx'
 import { EmailSideBar } from '../cmps/EmailSideBar.jsx'
 import { emailService } from '../services/email-service.js'
@@ -39,6 +40,7 @@ export class EmailApp extends React.Component {
     onSendingEmail = (ev, email) => {
         ev.preventDefault()
         emailService.addEmail(email)
+        eventBusService.emit('show-user-msg', { txt: 'Email sent!', type: 'success' })
         this.onOpenModal()
     }
 
@@ -81,7 +83,7 @@ export class EmailApp extends React.Component {
                 <EmailFilter onSetView={this.onSetView} />
                 <section className="email-app flex">
                     {/* <Link to={`/car/${car.id}/${car.vendor}`}>Details</Link> */}
-                    {isComposed && <EmailCompose txt={txtReceived} onSendingEmail={this.onSendingEmail} />}
+                    {isComposed && <EmailCompose txt={txtReceived} onOpenModal={this.onOpenModal} onSendingEmail={this.onSendingEmail} />}
                     <EmailSideBar onSetView={this.onSetView} onOpenModal={this.onOpenModal} />
                     <Switch>
                         <Route path="/email" render={(props) => (

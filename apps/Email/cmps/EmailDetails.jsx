@@ -1,17 +1,14 @@
-const {Link, Route, Switch } = ReactRouterDOM
+const { Link } = ReactRouterDOM
 
-export function EmailDetails({email,onDeleteEmail}) {
+export function EmailDetails({ email }) {
     return (
         <Link to="/email">
-        <div>
-            {/* <i className="fa fa-trash" onClick={() => onDeleteEmail(email.id)}></i> */}
-            <Link to={`/keep?body=${email.body}`}>
-                <i>save as note</i>
-            {/* /email/compose?subject=my note&body= note about the rain */}
-
-            </Link>
-            <p className="detailed-body">{email.body}</p>
-        </div>
+            <div className="body-container">
+                <Link to={`/keep?body=${email.body}`}>
+                    <i className="fa fas fa-todo save-as-note">save as note</i>
+                </Link>
+                <p className="detailed-body">{email.body}</p>
+            </div>
         </Link>
     )
 }
