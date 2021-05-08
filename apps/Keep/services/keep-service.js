@@ -8,6 +8,7 @@ export const keepService = {
   deleteNote,
   pinNote,
   onOpenClrCmp,
+  onCloseClrCmp,
   changeNoteClr,
   onEditNote,
 };
@@ -20,21 +21,17 @@ _createNotes();
 function query(filterBy) {
   var notes = storageService.loadFromStorage(KEY);
   if (!notes || !notes.length) notes = gNotes;
-  console.log("filterBy =", filterBy);
   if (filterBy) {
     if (filterBy === "pinned")
       return Promise.resolve(notes.filter((note) => note.isPinned));
-      if (filterBy === "not-pinned")
+    if (filterBy === "not-pinned")
       return Promise.resolve(notes.filter((note) => !note.isPinned));
     return Promise.resolve(notes.filter((note) => note.type === filterBy));
   }
-  // console.log("notes =", notes);
   return Promise.resolve(notes);
 }
 
 function onEditNote(txt, id) {
-  // need to handle different types of notes.
-  
   const idx = gNotes.findIndex((note) => note.id === id);
   gNotes[idx].info.txt = txt;
   _saveNotesToStorage();
@@ -55,6 +52,11 @@ function onOpenClrCmp(id) {
   return Promise.resolve();
 }
 
+function onCloseClrCmp() {
+  gNotes.forEach((note) => (note.isStyleEditing = false));
+  _saveNotesToStorage();
+  return Promise.resolve();
+}
 function pinNote(id) {
   const idx = gNotes.findIndex((note) => note.id === id);
   const text = gNotes[idx].isPinned ? "unpinned" : "pinned successfully";
@@ -75,7 +77,6 @@ function deleteNote(id) {
 }
 
 function addNewNote(note) {
-  console.log("note =", note);
   const newNote = _createNewNote(note);
   gNotes.unshift(newNote);
   _saveNotesToStorage();
@@ -97,8 +98,6 @@ function _createNewNote(note) {
 }
 
 function _createNewNoteInfo(noteType, noteInput) {
-  // console.log("noteType =", noteType);
-  // console.log("noteInput =", noteInput);
   if (noteType === "noteText") return { txt: noteInput };
   if (noteType === "noteVid") {
     const idx = noteInput.indexOf("v=");
@@ -111,23 +110,20 @@ function _createNewNoteInfo(noteType, noteInput) {
 }
 
 function _createNewImg(input) {
-  console.log("img input  =", input);
   return {
-    // title: "the title",
     url: input,
   };
 }
 
 function _createNewTodo(input) {
-  const todosArr = input.split(/[\s,]+/);
-  // console.log("todosArr =", todosArr);
+  // const todosArr = input.split(/[\s,]+/);
+  const todosArr = input.split(",");
   const todos = {
     label: "Todos",
     todos: todosArr.map((todo) => {
       return { txt: todo };
     }),
   };
-  // console.log("todos =", todos);
   return todos;
 }
 
@@ -137,7 +133,6 @@ function _saveNotesToStorage() {
 
 function _createNotes() {
   var notes = storageService.loadFromStorage(KEY);
-  console.log("notes =", notes);
   if (!notes || !notes.length) {
     notes = [
       {
@@ -146,7 +141,7 @@ function _createNotes() {
         isPinned: true,
         isStyleEditing: false,
         info: {
-          txt: "Fullstack Me Baby!",
+          txt: "Water the plants!",
         },
         style: {
           backgroundColor: "#e17474",
@@ -159,10 +154,23 @@ function _createNotes() {
         isPinned: false,
         isStyleEditing: false,
         info: {
-          txt: "Another note",
+          txt: "Work meeting at 16:00",
         },
         style: {
           backgroundColor: "#84c484",
+        },
+      },
+
+      {
+        id: utilService.makeId(),
+        type: "noteVid", // for VID
+        isPinned: false,
+        isStyleEditing: false,
+        info: {
+          url: "eX2qFMC8cFo",
+        },
+        style: {
+          backgroundColor: "#ffa500",
         },
       },
 
@@ -173,8 +181,8 @@ function _createNotes() {
         isStyleEditing: false,
         info: {
           url:
-            "http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/banana.png",
-          title: "Me playing Mi",
+            "https://blog.hotelsclick.com/wp-content/uploads/2017/01/Maldives-beach.jpg",
+          title: "I wish I was there",
         },
         style: {
           backgroundColor: "#ffc0cb",
@@ -187,9 +195,7 @@ function _createNotes() {
         isPinned: true,
         isStyleEditing: false,
         info: {
-          url:
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          // title: "Me playing Mi",
+          url: "http://media-ice.musicradio.com/Chill",
         },
         style: {
           backgroundColor: "#ffa500",
@@ -202,29 +208,29 @@ function _createNotes() {
         isPinned: false,
         isStyleEditing: false,
         info: {
-          url:
-            "https://actions.google.com/sounds/v1/science_fiction/windchime_drone.ogg",
-          // title: "Me playing Mi",
+          url: "http://media-ice.musicradio.com/ClassicFM",
         },
         style: {
           backgroundColor: "#b4b4da",
         },
       },
-      
+
       {
         id: utilService.makeId(),
         type: "noteTodos", // for TODO
         isPinned: false,
         isStyleEditing: false,
         info: {
-          label: "How was it:",
+          label: "Groceries",
           todos: [
-            { txt: "Do that", doneAt: null },
-            { txt: "Do this", doneAt: 187111111 },
+            { txt: "Dates", doneAt: null },
+            { txt: "Banana", doneAt: 187111111 },
+            { txt: "Mango", doneAt: 187111111 },
+            { txt: "Oat milk", doneAt: 187111111 },
           ],
         },
         style: {
-          backgroundColor: "#b4b4da",
+          backgroundColor: "#E7DC75",
         },
       },
 
@@ -238,6 +244,23 @@ function _createNotes() {
         },
         style: {
           backgroundColor: "#ffa500",
+        },
+      },
+
+      {
+        id: utilService.makeId(),
+        type: "noteTodos", // for TODO
+        isPinned: true,
+        isStyleEditing: false,
+        info: {
+          label: "How to succeed",
+          todos: [
+            { txt: "Study hard", doneAt: null },
+            { txt: "Have wine", doneAt: 187111111 },
+          ],
+        },
+        style: {
+          backgroundColor: "#84c484",
         },
       },
     ];

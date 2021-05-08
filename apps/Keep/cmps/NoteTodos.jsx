@@ -2,7 +2,7 @@ import { NoteActions } from './NoteActions.jsx'
 import { NoteBcgClr } from './NoteBcgClr.jsx'
 
 
-export function NoteTodos({ note,onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr, onOpenEditModal }) {
+export function NoteTodos({ note,onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr, onOpenEditModal,onCloseClr }) {
     const { todos, label } = note.info
 
     function onMarkTodo(ev) {
@@ -11,7 +11,8 @@ export function NoteTodos({ note,onDeleteNote, onPinNote, onOpenClr, onChangeNot
     }
 
     return (
-        <div className="note-preview" style={{backgroundColor: note.style.backgroundColor}}>
+        <div className="note-preview" style={{backgroundColor: note.style.backgroundColor}}
+        onMouseLeave={() => onCloseClr()}>
             <h1>{label}</h1>
             <ul>
                 {todos.map((todo, idx) => {

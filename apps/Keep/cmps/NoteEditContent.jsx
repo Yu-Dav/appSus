@@ -5,7 +5,6 @@ export class NoteEditContent extends React.Component {
         input: '',
     }
     handleChange = (ev) => {
-        // console.log('Change being handled')
         const field = ev.target.name
         let value = ev.target.value
         this.setState({ ...this.state, [field]: value })
@@ -14,8 +13,6 @@ export class NoteEditContent extends React.Component {
         console.log('content edit props =', this.props)
         const { input } = this.state
         return (
-            // <div className="modal-wrapper">
-
             <div className="edit-modal flex align-center space-btw " >
                 <h1>Edit note</h1>
                 <div className="input-container flex flex-column align-center">
@@ -29,7 +26,6 @@ export class NoteEditContent extends React.Component {
                     <button className="btn btn-confirm" onClick={() => this.props.onSaveEditChange(input)}>Save</button>
                 </div>
             </div >
-            // </div>
         )
     }
 }

@@ -2,14 +2,13 @@ import { NoteActions } from './NoteActions.jsx'
 import { NoteBcgClr } from './NoteBcgClr.jsx'
 
 
-export function NoteVid({ note, onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr, onOpenEditModal }) {
+export function NoteVid({ note, onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr, onOpenEditModal, onCloseClr }) {
     return (
-        // add overflow hidden in css. 
-        // responsive sizing is needed.
-        <div className="note-preview note-vid " style={{ backgroundColor: note.style.backgroundColor }}>
+        <div className="note-preview note-vid" style={{ backgroundColor: note.style.backgroundColor }}
+            onMouseLeave={() => onCloseClr()}>
             <div className="iframe-container">
 
-                <iframe className="responsive-iframe"
+                <iframe className="responsive-iframe" allowFullScreen={true}
                     src={`https://www.youtube.com/embed/${note.info.url}`}>
                 </iframe>
             </div>

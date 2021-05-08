@@ -1,10 +1,10 @@
 import { NoteActions } from './NoteActions.jsx'
 import { NoteBcgClr } from './NoteBcgClr.jsx'
 
-export function NoteTxt({ note, onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr, onOpenEditModal}) {
-    // console.log ('props =',props)
+export function NoteTxt({ note, onDeleteNote, onPinNote, onOpenClr, onChangeNoteClr, onOpenEditModal,onCloseClr}) {
     return (
-        <div style={{backgroundColor: note.style.backgroundColor}} className="note-preview">
+        <div style={{backgroundColor: note.style.backgroundColor}} className="note-preview note-txt flex flex-column"
+        onMouseLeave={() => onCloseClr()}>
             <p>
                 {note.info.txt}
             </p>

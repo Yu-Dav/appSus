@@ -12,17 +12,13 @@ export class NotesAdd extends React.Component {
         if (noteType === 'noteImg') txt = 'Add image URL'
         if (noteType === 'noteVid') txt = 'Add video URL'
         if (noteType === 'noteAud') txt = 'Add audio URL'
-        if (noteType === 'noteTodos') txt = 'Add tasks seperated by comma or space'
+        if (noteType === 'noteTodos') txt = 'Add tasks seperated by a comma'
         return txt
     }
     handleChange = (ev) => {
-        // ev.preventDefault()
         const field = ev.target.name
         let value = ev.target.value
-        // console.log ('value =',value)
-        this.setState({ ...this.state, [field]: value }, () => {
-            // this.getNewBook();
-        })
+        this.setState({ ...this.state, [field]: value })
     }
     onInputBlur = () => {
         console.log('Input blurred =')
@@ -31,28 +27,23 @@ export class NotesAdd extends React.Component {
             input: ''
         })
     }
-    // clear the input after submit
     render() {
         const { noteType, input } = this.state
         return (
             <section className="notes-add container ">
-                {/* <div className="notes-add "> */}
+                <form className="flex justify-center align-center space-btw"
+                    onSubmit={() => {
+                        this.props.onAddNewNote(event, this.state)
+                        this.setState({ ...this.state, input: '' })
+                    }}>
 
-                    <form className="flex justify-center align-center space-btw"
-                        onSubmit={() => {
-                            this.props.onAddNewNote(event, this.state)
-                            this.setState({...this.state, input: ''})
-                        }}>
+                    <input type="text" name="input" placeholder={this.getPlaceholder()}
+                        autoComplete="off" value={input} onChange={this.handleChange} onBlur={this.onInputBlur} />
 
-                        <input type="text" name="input" placeholder={this.getPlaceholder()}
-                            autoComplete="off" value={input} onChange={this.handleChange} onBlur={this.onInputBlur} />
+                    {/* <button className="btn">Save</button> */}
 
-                        {/* <button className="btn">Save</button> */}
-
-                        <NotesAddSelect handleChange={this.handleChange} />
-                    </form>
-
-                {/* </div> */}
+                    <NotesAddSelect handleChange={this.handleChange} />
+                </form>
             </section>
         )
     }

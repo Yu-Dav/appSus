@@ -1,0 +1,55 @@
+.home-page {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .5fr 1fr;
+    gap: 5px 5px;
+    grid-template-areas:
+        "hero hero"
+        "mail keep";
+}
+
+.home-page img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.hero {
+    grid-area: hero;
+    padding: 4rem;
+    font-size: 2em;
+    color: #fe5576;
+}
+
+.mail {
+    grid-area: mail;
+
+}
+
+.keep {
+    grid-area: keep;
+
+}
+
+@media (max-width: 560px) {
+    .hero {
+        padding: 1em;
+    }
+
+    .home-page.container {
+        padding: 1em 0;
+        margin: 1em 0;
+    }
+
+    .home-page {
+        /* text-align: center; */
+        display: grid;
+        grid-template-columns: 1fr ;
+        grid-template-rows: 1fr;
+        gap: 5px 5px;
+        grid-template-areas:
+            "hero"
+            "mail"
+            "keep";
+    }
+}
